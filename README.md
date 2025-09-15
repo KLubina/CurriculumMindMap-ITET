@@ -1,6 +1,7 @@
 # TODO
 
-- Mind-Map: from first semester to third semester
+- Vorwissen
+- Then from first semester to third semester
 - Scroll out/Scroll in
 - Roter Faden
 
