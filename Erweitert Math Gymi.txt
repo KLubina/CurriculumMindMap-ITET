@@ -43,7 +43,7 @@ die Konvergenz einer geometrischen Folge und der zugehörigen Reihe diskutieren
 ---------
 
 Grenzwerte, Stetigkeit
- den Grenzwertbegriff einer Funktion in einem Punkt und im Unendlichen definieren und erklären
+den Grenzwertbegriff einer Funktion in einem Punkt und im Unendlichen definieren und erklären
 Grenzwerte von Funktionen berechnen
 die Asymptoten einer Funktion definieren und bestimmen
 
@@ -52,20 +52,12 @@ die Stetigkeit einer Funktion in einem Punkt und in einem Intervall definieren u
 ---------
 
 Ableitungen
-
 die Ableitbarkeit einer Funktion in einem Punkt und in einem Intervall definieren 
-
 Ableitungen unter Verwendung der Definition und von Ableitungsregeln berechnen 
-
 ---------ERWEITERT
- die Umkehrfunktion einer Funktion definieren und Zusammenhänge zwischen Funktion und Umkehrfunktion kennen 
-
-die graphischen Elemente interpretieren, die in der Definition der 
-Ableitung auftreten 
-
-die Ableitung von Funktionen nach der Summenregel, Produktregel, Quotientenregel, die Ableitung von 
-zusammengesetzten Funktionen und die Ableitung der Umkehrung einer Bijektion erklären und beweisen
-
+die Umkehrfunktion einer Funktion definieren und Zusammenhänge zwischen Funktion und Umkehrfunktion kennen 
+die graphischen Elemente interpretieren, die in der Definition der Ableitung auftreten 
+die Ableitung von Funktionen nach der Summenregel, Produktregel, Quotientenregel, die Ableitung von zusammengesetzten Funktionen und die Ableitung der Umkehrung einer Bijektion erklären und beweisen
 die Regel von de l'Hospital darstellen und anwenden 
 die Beziehung zwischen erster Ableitung und Kurvenverlauf erklären und anwenden 
 die Beziehung zwischen zweiter Ableitung, Konkavität, Konvexität und Wendepunkt erklären und anwenden 
@@ -76,9 +68,7 @@ eine vollständige Kurvendiskussion einer ableitbaren oder stückweise definiert
 die Gleichung einer Tangente an einen Graphen bestimmen 
 
 Stammfunktionen,  Integrale
-den Begriff der Stammfunktion definieren, ihre Eigenschaften 
-darstellen und beweisen 
-
+den Begriff der Stammfunktion definieren, ihre Eigenschaften darstellen und beweisen 
 Stammfunktionen unter Verwendung der Integrationsregel, der Substitution und der Regel der partiellen Integration für übliche Funktionen berechnen und? erklären 
 
 ---------ERWEITERT
@@ -94,31 +84,19 @@ Geometrie
 Trigonometrie
 
 trigonometrische Beziehungen im rechtwinkligen Dreieck und den Satz von Pythagoras anwenden 
-
 auf dem Einheitskreis den Sinus und Kosinus eines Winkels oder einer reellen Zahl interpretieren und daraus die Periodizität der trigonometrischen Funktionen ablesen 
-
 die fundamentalen Beziehungen zwischen trigonometrischen Funktionen gleicher Winkel, komplementärer Winkel, supplementärer Winkel und Gegenwinkel erklären und beweisen 
-
 die Additionstheoreme erklären und beweisen 
-
 goniometrische Gleichungen lösen 
-
 den Sinus- und Kosinussatz erklären und anwenden 
-
 Vektorielle Geometrie der Ebene oder des Raumes 
-
 den Vektorbegriff, die Vektoraddition und die Multiplikation eines Vektors mit einem Skalar mit den zugehörigen Eigenschaften, sowie die Begriffe der Linearkombination von Vektoren darstellen 
-
 die Begriffe der kolinearen und komplanaren Vektoren definieren und anwenden 
-
 vektorielle Basen der Ebene und des Raumes und der zugehörigen Koordinatensysteme in Beziehung setzen, insbesondere orthonormierte Basen und Koordinatensysteme 
-
 das Skalarprodukt (algebraische und trigonometrische Darstellung) definieren und seine Eigenschaften anwenden 
-
 ---------ERWEITERT
 das Vektorprodukt und das Spatprodukt definieren, ihre geometrischen Eigenschaften angeben und diese Begriffe anwenden 
 ---------
-
 den Winkel zwischen zwei Vektoren berechnen 
 
 Analytische Geometrie der Ebene 
@@ -128,7 +106,6 @@ die gegenseitige Lage zweier Geraden diskutieren und ihren eventuell existierend
 den Zwischenwinkel zweier Geraden berechnen, den Abstand eines Punktes von einer Geraden, die Gleichungen der Winkelhalbierenden zweier Geraden bestimmen 
 die kartesische Kreisgleichung und die Gleichungen ihrer Tangenten erstellen 
 gegenseitige Lage von Punkten, Geraden und Kreisen bestimmen 
-
 ---------ERWEITERT
 die Koordinaten des Mittelpunktes einer Strecke, des Schwerpunktes eines Dreieckes und die Norm eines Vektors bestimmen  
 Flächen einfacher Figuren berechnen die Ellipse, die Parabel und die Hyperbel (Brennpunkte, 
@@ -139,8 +116,8 @@ die Eigenschaften von Kegelschnitten für die Bestimmung von geometrischen Örte
 ----------
 
 Analytische Geometrie des Raumes 
-die Parametergleichungen der Gerade erstellen  
 
+die Parametergleichungen der Gerade erstellen  
 ---------ERWEITERT
 die Koordinaten des Mittelpunktes einer Strecke, des Schwerpunktes eines Dreieckes und die Norm eines Vektors bestimmen  
 Parametergleichungen und kartesische Gleichung (Normalform) der Ebene erstellen und daraus Richtungsvektoren und Normalenvektor ermitteln 
@@ -175,22 +152,16 @@ Masszahlen einer Verteilung (arithmetisches Mittel, Modus, Median, Varianz und S
 ---------ERWEITERT
 Kombinatorik 
 einfache Anordnungen (Variationen, Kombinationen) mit oder ohne Wiederholungen, Permutationen mit oder ohne Wiederholungen erkennen und unterscheiden, diese abzählen und zur Lösung einfacher kombinatorischer Probleme anwenden 
-
 die Koeffizienten des Pascal'schen Dreieckes berechnen und im Zusammenhang mit dem binomischen Lehrsatz anwenden. 
 ---------
 
 Wahrscheinlichkeit
 
 die Begriffe Zufallsexperiment, Ergebnis, Ereignis erklären 
-
-die Ereignisse nicht-A, A oder B, A und B, unabhängige und 
-unvereinbare (disjunkte) Ereignisse definieren 
-
+die Ereignisse nicht-A, A oder B, A und B, unabhängige und unvereinbare (disjunkte) Ereignisse definieren 
 ---------ERWEITERT
 das sichere und unmögliche Ereignis definieren 
 unabhängige Ereignisse und Folgen von Zufallsversuchen erkennen 
 ---------
-
 bedingte Wahrscheinlichkeiten berechnen  
-
 einen Ergebnisbaum aufstellen und anwenden 
