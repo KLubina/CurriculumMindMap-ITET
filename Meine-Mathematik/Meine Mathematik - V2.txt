@@ -1,0 +1,46 @@
+Primarschule (1. Klasse bis 6. Klasse) (6 Jahre)
+- Mathematik
+-- Addition, Subtraktion, Division, Multiplikation
+
+Sekundarschule I (1. SEK bis 3. SEK) (3 Jahre)
+- Arithmetik
+- Algebra
+- Geometrie
+
+Gymnasium (1. Gymi bis 4. Gymi) (4 Jahre) (normal)
+- Algebra
+-- Gleichungen, Ungleichungen und Systeme
+Gleichungen und Systeme von Gleichungen 1. Grades mit einer, zwei oder drei Variablen lösen 
+die Auflösungsformel der Gleichung zweiten Grades erklären und 
+anwenden 
+Polynome zweiten Grades faktorisieren 
+Gleichungen lösen, die auf Gleichungen zweiten Grades 
+zurückgeführt werden können 
+Lösen von Gleichungen dritten Grades mit Polynomdivision 
+Lösen von Ungleichungen mit 1 Unbekannten
+- Analysis
+-- Elementare Funktionen
+-- Grenzwerte, Stetigkeit
+-- Ableitungen
+-- Stammfunktionen, Integrale
+- Geometrie
+-- Trigonometrie
+-- Vektorielle und analytische Geometrie der Ebene und des Raumes
+-- Analytische Geometrie der Ebene
+-- Analytische Geometrie des Raumes
+- Stochastik
+-- beschreibende Statistik
+-- Wahrscheinlichkeit
+
+Gymnasium (1. Gymi bis 4. Gymi) (4 Jahre) (erweitert)
+
+???
+
+ETH 1. Semester
+- Lineare Algebra
+- Diskrete Mathematik
+- Analysis I
+
+ETH 2. Semester
+- Mathematische Methoden (ehem. Komplexe Analysis)
+- Analysis II

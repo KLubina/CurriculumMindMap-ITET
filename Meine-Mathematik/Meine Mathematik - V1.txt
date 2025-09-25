@@ -1,0 +1,35 @@
+Primarschule (1. Klasse bis 6. Klasse) (6 Jahre)
+- Mathematik
+
+Sekundarschule I (1. SEK bis 3. SEK) (3 Jahre)
+- Arithmetik
+- Algebra
+- Geometrie
+
+Gymnasium (1. Gymi bis 4. Gymi) (4 Jahre)
+- Algebra
+-- Gleichungen, Ungleichungen und Systeme
+- Analysis
+-- Elementare Funktionen
+-- Grenzwerte, Stetigkeit
+-- Ableitungen
+-- Stammfunktionen, Integrale
+- Geometrie
+-- Trigonometrie
+-- Vektorielle und analytische Geometrie der Ebene und des Raumes
+-- Analytische Geometrie der Ebene
+-- Analytische Geometrie des Raumes
+- Stochastik
+-- beschreibende Statistik
+-- Wahrscheinlichkeit
+
+???
+
+ETH 1. Semester
+- Lineare Algebra
+- Diskrete Mathematik
+- Analysis I
+
+ETH 2. Semester
+- Mathematische Methoden (ehem. Komplexe Analysis)
+- Analysis II
