@@ -6,7 +6,8 @@
 - Gleichungen lösen, die auf Gleichungen zweiten Grades 
 - zurückgeführt werden können 
 - Lösen von Gleichungen dritten Grades mit Polynomdivision  
----------ERWEITERT
+---------
+#### ERWEITERT
 - Ungleichungen mit einer Variablen lösen 
 - Systeme von Ungleichungen mit zwei Variablen graphisch lösen
 - formale Gleichungen und Ungleichungen mit Parameterdiskussion lösen
