@@ -6,8 +6,7 @@
 - Gleichungen lösen, die auf Gleichungen zweiten Grades 
 - zurückgeführt werden können 
 - Lösen von Gleichungen dritten Grades mit Polynomdivision  
----------
-#### ERWEITERT
+---------ERWEITERT
 - Ungleichungen mit einer Variablen lösen 
 - Systeme von Ungleichungen mit zwei Variablen graphisch lösen
 - formale Gleichungen und Ungleichungen mit Parameterdiskussion lösen
@@ -26,8 +25,7 @@
 - die folgenden elementaren Funktionen (Definitionsbereich, Eigenschaften, graphische Darstellung) beschreiben und erkennen: konstante Funktion, Identität, lineare und affine Funktion, Potenzfunktion, Quadratwurzelfunktion, Betragsfunktion, sin(x), cos(x), tan(x), ex, ax, ln(x), loga(x) sowie davon 
 Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x) 
 
----------
-#### ERWEITERT
+---------ERWEITERT
 ### Reelle Folgen 
 - das Prinzip der vollständigen Induktion erkläre und zum Beweis von Sätzen anwenden 
 - eine Folge durch ihren allgemeinen Term oder durch vollständige Induktion, insbesondere eine arithmetische oder geometrische Folge, definieren 
@@ -40,16 +38,14 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 - den Grenzwertbegriff einer Funktion in einem Punkt und im Unendlichen definieren und erklären
 - Grenzwerte von Funktionen berechnen
 - die Asymptoten einer Funktion definieren und bestimmen
----------
-#### ERWEITERT
+---------ERWEITERT
 - die Stetigkeit einer Funktion in einem Punkt und in einem Intervall definieren und erklären 
 ---------
 
 ### Ableitungen
 - die Ableitbarkeit einer Funktion in einem Punkt und in einem Intervall definieren 
 - Ableitungen unter Verwendung der Definition und von Ableitungsregeln berechnen 
----------
-#### ERWEITERT
+---------ERWEITERT
 - die Umkehrfunktion einer Funktion definieren und Zusammenhänge zwischen Funktion und Umkehrfunktion kennen 
 - die graphischen Elemente interpretieren, die in der Definition der Ableitung auftreten 
 - die Ableitung von Funktionen nach der Summenregel, Produktregel, Quotientenregel, die Ableitung von zusammengesetzten Funktionen und die Ableitung der Umkehrung einer Bijektion erklären und beweisen
@@ -64,8 +60,7 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 ### Stammfunktionen,  Integrale
 - den Begriff der Stammfunktion definieren, ihre Eigenschaften darstellen und beweisen 
 - Stammfunktionen unter Verwendung der Integrationsregel, der Substitution und der Regel der partiellen Integration für übliche Funktionen berechnen und? erklären 
----------
-#### ERWEITERT
+---------ERWEITERT
 - das Integral als Riemann'sche Summe präsentieren 
 - den Hauptsatz der Integralrechnung erklären und beweisen, diesen Satz zur Berechnung von Integralen anwenden 
 - Volumen von Rotationskörpern berechnen
@@ -85,8 +80,7 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 - die Begriffe der kolinearen und komplanaren Vektoren definieren und anwenden 
 - vektorielle Basen der Ebene und des Raumes und der zugehörigen Koordinatensysteme in Beziehung setzen, insbesondere orthonormierte Basen und Koordinatensysteme 
 - das Skalarprodukt (algebraische und trigonometrische Darstellung) definieren und seine Eigenschaften anwenden 
----------
-#### ERWEITERT
+---------ERWEITERT
 - das Vektorprodukt und das Spatprodukt definieren, ihre geometrischen Eigenschaften angeben und diese Begriffe anwenden 
 ---------
 - den Winkel zwischen zwei Vektoren berechnen 
@@ -97,8 +91,7 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 - den Zwischenwinkel zweier Geraden berechnen, den Abstand eines Punktes von einer Geraden, die Gleichungen der Winkelhalbierenden zweier Geraden bestimmen 
 - die kartesische Kreisgleichung und die Gleichungen ihrer Tangenten erstellen 
 - gegenseitige Lage von Punkten, Geraden und Kreisen bestimmen 
----------
-#### ERWEITERT
+---------ERWEITERT
 - die Koordinaten des Mittelpunktes einer Strecke, des Schwerpunktes eines Dreieckes und die Norm eines Vektors bestimmen  
 - Flächen einfacher Figuren berechnen die Ellipse, die Parabel und die Hyperbel (Brennpunkte, 
 - Leitgeraden, Exzentrizität, Asymptoten) definieren und ihre Eigenschaften darstellen, daraus die Mittelpunktsgleichungen herleiten 
@@ -109,8 +102,7 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 
 ### Analytische Geometrie des Raumes 
 - die Parametergleichungen der Gerade erstellen  
----------
-#### ERWEITERT
+---------ERWEITERT
 - die Koordinaten des Mittelpunktes einer Strecke, des Schwerpunktes eines Dreieckes und die Norm eines Vektors bestimmen  
 - Parametergleichungen und kartesische Gleichung (Normalform) der Ebene erstellen und daraus Richtungsvektoren und Normalenvektor ermitteln 
 - den Abstand zweier Punkte, den Abstand Punkt-Gerade, den Abstand Punkt-Ebene sowie den Abstand windschiefer Geraden berechnen 
@@ -119,8 +111,7 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 - Volumen und Oberflächen einfacher Körper berechnen 
 ----------
 
----------
-#### ERWEITERT
+---------ERWEITERT
 ## Lineare Algebra
 ### Lineare Abbildungen, 2x2 Matrizen
 - eine lineare Abbildung erkennen und deren Kern und Bildraum bestimmen 
@@ -137,8 +128,7 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 - die Begriffe Population, Bestand und relative Häufigkeit auf einfache Situationen anwenden 
 - eine Verteilung anhand eines Kreis- oder Stabdiagrammes oder eines Histogrammes darstellen 
 - Masszahlen einer Verteilung (arithmetisches Mittel, Modus, Median, Varianz und Standardabweichung) definieren und interpretieren 
----------
-#### ERWEITERT
+---------ERWEITERT
 ### Kombinatorik 
 - einfache Anordnungen (Variationen, Kombinationen) mit oder ohne Wiederholungen, Permutationen mit oder ohne Wiederholungen erkennen und unterscheiden, diese abzählen und zur Lösung einfacher kombinatorischer Probleme anwenden 
 - die Koeffizienten des Pascal'schen Dreieckes berechnen und im Zusammenhang mit dem binomischen Lehrsatz anwenden. 
@@ -146,16 +136,14 @@ Abgewandelte: f(-x), -f(x), -f(-x), |f(x)|, f(|x|), f(x+k), f(x)+k, k·f(x)
 ### Wahrscheinlichkeit
 - die Begriffe Zufallsexperiment, Ergebnis, Ereignis erklären 
 - die Ereignisse nicht-A, A oder B, A und B, unabhängige und unvereinbare (disjunkte) Ereignisse definieren 
----------
-#### ERWEITERT
+---------ERWEITERT
 - das sichere und unmögliche Ereignis definieren 
 - unabhängige Ereignisse und Folgen von Zufallsversuchen erkennen 
 ---------
 - bedingte Wahrscheinlichkeiten berechnen  
 - einen Ergebnisbaum aufstellen und anwenden 
 
----------
-#### ERWEITERT
+---------ERWEITERT
 ### Zufallsvariablen
 -  die Begriffe Zufallsvariable, Erwartungswert und Standardabweichung einer Zufallsvariablen definieren, insbesondere bei einer Binomialverteilung
 - die Binominalverteilung anwenden
