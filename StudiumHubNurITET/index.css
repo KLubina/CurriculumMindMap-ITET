@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+header .container {
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1rem;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featured-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.featured-cards .card {
+    width: 300px;
+}
+
+.cards-container {
+    margin-bottom: 30px;
+}
+
+.category-heading {
+    font-size: 1.5rem;
+    color: #003366;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #003366;
+}
+
+.category-heading:first-child {
+    margin-top: 0;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.card-header {
+    padding: 15px;
+    color: white;
+}
+
+/* #region ==== STUDIENGANG-SPEZIFISCHE FARBEN ==== */
+.eth-math .card-header {
+    background-color: #0d5b8c;
+}
+
+.eth-cse .card-header {
+    background-color: #8064a2;
+}
+
+.unisg-bwl .card-header {
+    background-color: #0066b2;
+}
+
+.eth-cs .card-header {
+    background-color: #7cc623;
+}
+
+.eth-itet .card-header {
+    background-color: #00a0e3;
+}
+
+.eth-mtec .card-header {
+    background-color: #e67e22;
+}
+
+.hssh-it .card-header {
+    background-color: #2E86AB;
+}
+
+.aspira-ce .card-header {
+    background-color: #1F4E79;
+}
+
+.fhzh-cs .card-header {
+    background-color: #5B9BD5;
+}
+
+.fhgr-cds .card-header {
+    background-color: #D4A574;
+}
+
+.eth-rig .card-header {
+    background-color: #DC143C;
+}
+
+.fhbern-eit .card-header {
+    background-color: #00a0e3;
+}
+
+.fhlu-eit .card-header {
+    background-color: #00a0e3;
+}
+
+.eth-hst .card-header {
+    background-color: #2b8a7a;
+}
+
+.sozwi .card-header {
+    background-color: #6a1b9a;
+}
+
+.uzh-geschichte .card-header {
+    background-color: #8b4513;
+}
+
+.uzh-polisci .card-header {
+    background-color: #1e40af;
+}
+
+.uzh-ethnologie .card-header {
+    background-color: #c2410c;
+}
+
+.uzh-kommunikation .card-header {
+    background-color: #0891b2;
+}
+
+.uzh-pop-kultur .card-header {
+    background-color: #db2777;
+}
+
+.uzh-soziologie .card-header {
+    background-color: #7c3aed;
+}
+
+.eth-msc-itet .card-header {
+    background-color: #00a0e3;
+}
+
+.eth-lmw .card-header {
+    background-color: #16a34a;
+}
+
+.eth-masch .card-header {
+    background-color: #0D5B8C;
+}
+
+.eth-matw .card-header {
+    background-color: #d97706;
+}
+
+.eth-physik .card-header {
+    background-color: #7c2d12;
+}
+
+.unibas-sbg .card-header {
+    background-color: #0891b2;
+}
+/* #endregion ==== STUDIENGANG-SPEZIFISCHE FARBEN ==== */
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.study-model-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+}
+
+/* ==== FEATURE ICONS (simple emoji-based) ==== */
+.feature-icons,
+.feature-icons-placeholder {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.feature-icon {
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 4px 6px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    user-select: none;
+}
+
+.feature-icon:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.card-body {
+    padding: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.card-footer {
+    padding: 15px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff9900;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+/* ==== RESPONSIVE DESIGN ==== */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .featured-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
