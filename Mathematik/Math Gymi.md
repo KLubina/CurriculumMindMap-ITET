@@ -11,7 +11,7 @@
 - formale Gleichungen und Ungleichungen mit Parameterdiskussion lösen
 
 ### Komplexe Zahlen
-- den Begriff der komplexen Zahl und ihrer verschiedenen Formen algebraische und trigonometrische Form) darstellen 
+- den Begriff der komplexen Zahl und ihrer verschiedenen Formen algebraische und trigonometrische Form darstellen 
 - die Operationen unter all ihren obengenannten Formen definieren, ihre Eigenschaften und die Formel von Moivre darstellen 
 - eine komplexe Zahl in der Gauss'schen Ebene darstellen, ihre Teile identifizieren (Real- und Imaginärteil, Modul und Argument) 
 - Gleichungen in der Menge C lösen (2. Grades und solche, welche auf eine 2. Grades zurückgeführt werden können wie zn =a,  a ∈ C) 

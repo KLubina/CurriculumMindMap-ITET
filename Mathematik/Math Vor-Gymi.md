@@ -54,16 +54,6 @@ Du kannst mit Dezimalzahlen rechnen:
 
 Du verstehst, dass eine Dezimalzahl wie 2.345 bedeutet: 2 Einer, 3 Zehntel, 4 Hundertstel, 5 Tausendstel.
 
-### Die reellen Zahlen ℝ (mit Wurzeln)
-
-Du kennst irrationale Zahlen wie √2, π, e. Du verstehst, dass diese Zahlen unendlich viele nicht-periodische Nachkommastellen haben.
-
-**Wurzelrechnung:** Du kannst mit einfachen Wurzeln umgehen:
-- √4 = 2, √9 = 3, √16 = 4, √25 = 5, √36 = 6, √49 = 7, √64 = 8, √81 = 9, √100 = 10
-- √(a·b) = √a · √b: Also √12 = √(4·3) = √4 · √3 = 2√3
-- √(a/b) = √a / √b: Also √(9/4) = 3/2
-- Nenner rational machen: 1/√2 = √2/2
-
 ### Prozentrechnung
 
 Die Prozentrechnung muss völlig automatisch funktionieren. Du verstehst, dass Prozent "von Hundert" bedeutet und dass 1% = 0.01 = 1/100.
@@ -82,6 +72,16 @@ Die Prozentrechnung muss völlig automatisch funktionieren. Du verstehst, dass P
 **Zinsrechnung:** Du verstehst einfache Zinsberechnungen:
 - Kapital K, Zinssatz p%, Zinsen Z = K · p/100
 - Nach einem Jahr mit 5% Zinsen: Neues Kapital = K · 1.05
+
+### Die reellen Zahlen ℝ (mit Wurzeln)
+
+Du kennst irrationale Zahlen wie √2, π, e. Du verstehst, dass diese Zahlen unendlich viele nicht-periodische Nachkommastellen haben.
+
+**Wurzelrechnung:** Du kannst mit einfachen Wurzeln umgehen:
+- √4 = 2, √9 = 3, √16 = 4, √25 = 5, √36 = 6, √49 = 7, √64 = 8, √81 = 9, √100 = 10
+- √(a·b) = √a · √b: Also √12 = √(4·3) = √4 · √3 = 2√3
+- √(a/b) = √a / √b: Also √(9/4) = 3/2
+- Nenner rational machen: 1/√2 = √2/2
 
 ## Potenzen und Wurzeln
 
