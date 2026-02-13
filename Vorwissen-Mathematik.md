@@ -20,236 +20,239 @@
     - Betrag
 - Rationale Zahlen
   - Bruchrechnung
-    - Zähler & Nenner
     - Erweitern & Kürzen
     - Hauptnenner
     - Kehrwert
     - ggT & kgV
   - Dezimalzahlen
-    - Stellenwerte
     - Periodische Zahlen
-    - Umwandlung Bruch-Dezimal
+    - Umwandlung
 - Reelle Zahlen
   - Irrationale Zahlen
     - Kreiszahl π
     - Eulersche Zahl e
   - Wurzeln
     - Quadratwurzel
-    - Rechnen mit Wurzeln
-    - Rationalmachen des Nenners
+    - Rechenregeln
+    - Rationalmachen
 
-# Geometrie
+# Algebra
 
-- Ebene Figuren
-  - Dreiecke
-    - Allgemeines Dreieck
-    - Gleichseitiges Dreieck
-    - Gleichschenkliges Dreieck
-    - Rechtwinkliges Dreieck
-    - Winkelsumme
-  - Vierecke
-    - Rechteck
-    - Quadrat
-    - Parallelogramm
-    - Trapez
-  - Kreis
-    - Radius
-    - Durchmesser
-    - Umfang
-    - Flächeninhalt
-- Körperberechnung
-  - Volumen & Oberfläche
-  - Körpertypen
-    - Quader
-    - Würfel
-    - Prisma
-    - Zylinder
-- Satz des Pythagoras
-  - Elemente
-    - Katheten
-    - Hypotenuse
-  - Anwendungen
-    - Seitenberechnung
-    - Rechtwinkligkeitsprüfung
-    - Diagonale im Rechteck
-    - Diagonale im Quadrat
-
-# Algebra & Terme
-
-- Potenzen
-  - Begriffe
-    - Basis
-    - Exponent
-  - Potenzgesetze
-    - Multiplikation gleicher Basen
-    - Division gleicher Basen
-    - Potenzieren von Potenzen
-    - Gleiche Exponenten
-  - Spezielle Exponenten
-    - Negative Exponenten
-    - Gebrochene Exponenten (Wurzeln)
-    - Exponent Null
-- Termumformung
-  - Grundlagen
-    - Variablen
-    - Koeffizienten
-  - Operationen
+- Terme & Umformungen
+  - Grundoperationen
     - Zusammenfassen
-    - Distributivgesetz (Ausmultiplizieren)
-    - Faktorisieren (Ausklammern)
+    - Distributivgesetz
+    - Faktorisieren
   - Binomische Formeln
-    - Erste Formel (Plus)
-    - Zweite Formel (Minus)
-    - Dritte Formel (Plus-Minus)
-
-# Gleichungslehre
-
-- Lineare Gleichungen
-  - Lösungsstrategien
-    - Äquivalenzumformung
-    - Isolieren der Variablen
-    - Umgang mit Klammern
-    - Umgang mit Brüchen
-- Lineare Gleichungssysteme
-  - Lösungsmethoden
+    - Erste (Plus)
+    - Zweite (Minus)
+    - Dritte (Plus-Minus)
+  - Potenzgesetze
+    - Gleiche Basis
+    - Gleiche Exponenten
+    - Potenzieren von Potenzen
+- Gleichungen & Ungleichungen
+  - Lineare Gleichungssysteme
     - Einsetzungsverfahren
     - Gleichsetzungsverfahren
     - Additionsverfahren
-- Quadratische Gleichungen
-  - Typen
-    - Reinquadratisch
-    - Gemischtquadratisch
-  - Lösungsmethoden
-    - Wurzelziehen
-    - Faktorisieren
+  - Quadratische Gleichungen
+    - Faktorisierung
+    - pq-Formel / abc-Formel
+    - Diskriminante
+  - Höhere Ordnung
+    - Polynomdivision
+    - Substitution (biquadratisch)
     - Satz vom Nullprodukt
-    - Lösungsformeln (abc/pq)
-
-# Funktionen
-
-- Funktionsbegriff
-  - Definition
-    - Zuordnung
-    - Eindeutigkeit
-  - Elemente
-    - Definitionsbereich
-    - Wertebereich
-    - Funktionsterm
-    - Graph
-- Lineare Funktionen
-  - Parameter
-    - Steigung m
-    - y-Achsenabschnitt b
-  - Berechnungen
-    - Steigungsdreieck
-    - Nullstellen
-    - Schnittpunkte
-    - Gerade aus zwei Punkten
-- Quadratische Funktionen
-  - Eigenschaften
-    - Parabelform
-    - Öffnung (oben/unten)
-    - Scheitelpunkt
+  - Ungleichungen
+    - Äquivalenzumformung
+    - Fallunterscheidung
+    - Lösungsmenge
+- Komplexe Zahlen
   - Darstellungsformen
-    - Normalform
-    - Scheitelpunktform
-  - Transformationen
-    - Verschiebung
-    - Streckung/Stauchung
-- Weitere Funktionstypen
-  - Potenzfunktionen
-  - Wurzelfunktionen
-  - Betragsfunktionen
-  - Hyperbeln (1/x)
+    - Algebraische Form (a+bi)
+    - Trigonometrische Form
+    - Gaußsche Zahlenebene
+  - Rechenoperationen
+    - Konjugiert Komplexes
+    - Betrag & Argument
+    - Satz von Moivre
+    - n-te Wurzeln
 
-# Prozent & Verhältnisse
+# Analysis
 
-- Prozentrechnung
-  - Grundbegriffe
-    - Grundwert
-    - Prozentwert
-    - Prozentsatz
-  - Berechnungen
-    - Prozentuale Zunahme
-    - Prozentuale Abnahme
-  - Zinsrechnung
-    - Kapital
-    - Zinssatz
-    - Jahreszinsen
-- Proportionalität
-  - Direkte Proportionalität
-    - Quotientengleichheit
-    - Proportionalitätsfaktor
-    - Ursprungsgerade
-  - Indirekte Proportionalität
-    - Produktgleichheit
-    - Hyperbel-Graph
-- Dreisatz
-  - Verfahren
-    - Direkter Dreisatz
-    - Indirekter Dreisatz
+- Elementare Funktionen
+  - Grundtypen
+    - Lineare & Affine
+    - Potenzfunktionen
+    - Wurzelfunktionen
+    - Betragsfunktion
+  - Transzendente Funktionen
+    - Exponentialfunktion
+    - Logarithmus
+    - Trigonometrische
+  - Eigenschaften
+    - Definitionsbereich
+    - Symmetrie
+    - Monotonie
+- Folgen & Reihen
+  - Folgentypen
+    - Arithmetische Folgen
+    - Geometrische Folgen
+  - Methoden
+    - Vollständige Induktion
+    - Summenformeln
+  - Konvergenz
+    - Grenzwertbegriff
+    - Nullfolgen
+- Grenzwerte & Stetigkeit
+  - Limes
+    - Grenzwertsätze
+    - Asymptoten
+    - Regel von L'Hospital
+  - Stetigkeit
+    - Punktweise Stetigkeit
+    - Sprungstellen
+    - Lücken
+- Differentialrechnung
+  - Grundlagen
+    - Differenzenquotient
+    - Tangentensteigung
+  - Ableitungsregeln
+    - Produktregel
+    - Quotientenregel
+    - Kettenregel
+  - Kurvendiskussion
+    - Extrema (Min/Max)
+    - Wendepunkte
+    - Krümmungsverhalten
+  - Anwendungen
+    - Optimierungsprobleme
+    - Tangentengleichung
+- Integralrechnung
+  - Grundlagen
+    - Stammfunktion
+    - Bestimmtes Integral
+    - Hauptsatz
+  - Methoden
+    - Substitution
+    - Partielle Integration
+  - Anwendungen
+    - Flächenberechnung
+    - Rotationsvolumen
 
-# Trigonometrie
+# Geometrie
 
-- Rechtwinkliges Dreieck
-  - Seitenbezeichnung
-    - Gegenkathete
-    - Ankathete
-    - Hypotenuse
-  - Winkelfunktionen
-    - Sinus
-    - Kosinus
-    - Tangens
-  - Berechnungen
-    - Seitenlängen
-    - Winkelgrößen (Arcus-Funktionen)
-  - Spezielle Winkelwerte
-    - 30 Grad
-    - 45 Grad
-    - 60 Grad
+- Elementare Geometrie
+  - Ebene Figuren
+    - Dreiecke & Vierecke
+    - Kreisberechnung
+    - Satz des Pythagoras
+  - Körper
+    - Volumen
+    - Oberfläche
+- Trigonometrie
+  - Grundlagen
+    - Sinus, Kosinus, Tangens
+    - Einheitskreis
+    - Periodizität
+  - Identitäten
+    - Additionstheoreme
+    - Sinussatz
+    - Kosinussatz
+  - Gleichungen
+    - Goniometrische Gleichungen
+    - Lösungsmenge
+- Vektorielle Geometrie
+  - Vektoroperationen
+    - Addition
+    - Skalarmultiplikation
+    - Linearkombination
+  - Produkte
+    - Skalarprodukt
+    - Kreuzprodukt (Vektorprodukt)
+    - Spatprodukt
+  - Anwendungen
+    - Winkelberechnung
+    - Orthogonalität
+    - Volumenberechnung
+- Analytische Geometrie Ebene
+  - Objekte
+    - Geraden (Parameter/Normalen)
+    - Kreise
+    - Kegelschnitte (Ellipse/Parabel/Hyperbel)
+  - Lagebeziehungen
+    - Schnittpunkte
+    - Abstände
+    - Tangenten
+- Analytische Geometrie Raum
+  - Objekte
+    - Ebenen (Parameter/Koordinaten)
+    - Geraden im Raum
+    - Kugeln
+  - Lagebeziehungen
+    - Windschiefe Geraden
+    - Schnittwinkel
+    - Abstände (Punkt-Ebene)
 
 # Stochastik
 
 - Beschreibende Statistik
-  - Datenerhebung
-    - Strichlisten
-    - Wertetabellen
-  - Diagramme
-    - Säulendiagramm
-    - Balkendiagramm
-    - Kreisdiagramm
-    - Histogramm
+  - Datendarstellung
+    - Histogramme
+    - Diagramme
   - Kennzahlen
-    - Arithmetisches Mittel
-    - Median (Zentralwert)
-    - Modus (Modalwert)
+    - Mittelwert
+    - Median & Modus
+    - Varianz & Standardabweichung
+- Kombinatorik
+  - Zählprinzipien
+    - Permutationen
+    - Variationen
+    - Kombinationen
+  - Sätze
+    - Binomischer Lehrsatz
+    - Pascalsches Dreieck
 - Wahrscheinlichkeitsrechnung
-  - Grundbegriffe
-    - Zufallsexperiment
-    - Ergebnisraum
-    - Ereignis
-  - Berechnung
+  - Grundlagen
+    - Ereignisse
     - Laplace-Wahrscheinlichkeit
     - Baumdiagramme
-    - Pfadregeln
+  - Regeln
+    - Additionsregel
+    - Multiplikationsregel
+    - Bedingte Wahrscheinlichkeit
+- Zufallsvariablen
+  - Kenngrößen
+    - Erwartungswert
+    - Varianz
+  - Verteilungen
+    - Binomialverteilung
+    - Normalverteilung
 
-# Analytische Geometrie
+# Lineare Algebra
 
-- Koordinatensystem
-  - Elemente
-    - x-Achse (Abszisse)
-    - y-Achse (Ordinate)
-    - Ursprung
-  - Bereiche
-    - I. Quadrant
-    - II. Quadrant
-    - III. Quadrant
-    - IV. Quadrant
-- Punkte im Raum
-  - Koordinaten
-    - x-Wert
-    - y-Wert
-  - Berechnungen
-    - Abstand zweier Punkte
-    - Mittelpunkt einer Strecke
-    - Graphen zeichnen
+- Lineare Abbildungen
+  - Begriffe
+    - Kern (Nullraum)
+    - Bildraum
+    - Invertierbarkeit
+  - Darstellung
+    - Abbildungsmatrix
+    - Basiswechsel
+- Matrizenrechnung (2x2)
+  - Operationen
+    - Matrixmultiplikation
+    - Determinante
+    - Inverse Matrix
+  - Spezielles
+    - Einheitsmatrix
+    - Transponierte
+- Eigenwertprobleme
+  - Berechnung
+    - Eigenwerte
+    - Eigenvektoren
+    - Charakteristisches Polynom
+  - Bedeutung
+    - Streckung
+    - Invariante Richtungen
