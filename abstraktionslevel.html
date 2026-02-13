@@ -19,6 +19,10 @@
             --sem2: #45d4a8;
             --sem3: #f0a050;
             --sem4: #e06088;
+            --vw-math: #a78bfa;
+            --vw-phys: #22d3ee;
+            --vor-gymi: #f9a8d4;
+            --gymi: #86efac;
             --radius: 12px;
             --transition: .3s cubic-bezier(.4, 0, .2, 1);
         }
@@ -131,6 +135,18 @@
             background: rgba(224, 96, 136, .12);
         }
 
+        .sem-tab[data-sem="vor-gymi"].active {
+            border-color: var(--vor-gymi);
+            color: var(--vor-gymi);
+            background: rgba(249, 168, 212, .12);
+        }
+
+        .sem-tab[data-sem="gymi"].active {
+            border-color: var(--gymi);
+            color: var(--gymi);
+            background: rgba(134, 239, 172, .12);
+        }
+
         /* Abstraction Level Buttons */
         .level-btns {
             display: flex;
@@ -196,6 +212,50 @@
             border-color: var(--sem4);
         }
 
+        .semester-section[data-sem="vg-math"] .semester-header {
+            border-color: var(--vor-gymi);
+        }
+
+        .semester-section[data-sem="gy-math"] .semester-header {
+            border-color: var(--vw-math);
+        }
+
+        .semester-section[data-sem="gy-phys"] .semester-header {
+            border-color: var(--vw-phys);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            text-align: center;
+            margin: 48px 0 32px;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-divider span {
+            position: relative;
+            background: var(--bg);
+            padding: 0 20px;
+            font-size: .85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 700;
+        }
+
+        .section-divider.hidden {
+            display: none;
+        }
+
         /* Module Grid */
         .module-grid {
             display: grid;
@@ -235,6 +295,18 @@
 
         .semester-section[data-sem="4"] .module-card::before {
             background: var(--sem4);
+        }
+
+        .semester-section[data-sem="vg-math"] .module-card::before {
+            background: var(--vor-gymi);
+        }
+
+        .semester-section[data-sem="gy-math"] .module-card::before {
+            background: var(--vw-math);
+        }
+
+        .semester-section[data-sem="gy-phys"] .module-card::before {
+            background: var(--vw-phys);
         }
 
         .module-card:hover {
@@ -455,6 +527,8 @@
             <span class="nav-label">Semester</span>
             <div class="sem-tabs">
                 <button class="sem-tab active" data-sem="all">Alle</button>
+                <button class="sem-tab" data-sem="vor-gymi">Vor-Gymi</button>
+                <button class="sem-tab" data-sem="gymi">Gymi</button>
                 <button class="sem-tab" data-sem="1">1</button>
                 <button class="sem-tab" data-sem="2">2</button>
                 <button class="sem-tab" data-sem="3">3</button>
@@ -799,6 +873,459 @@
             }
         ];
 
+        // ═══════════════════════════════════════════════════════════
+        // VORWISSEN DATA – from Vorwissen-Mathematik.md & Vorwissen-Physik.md
+        // ═══════════════════════════════════════════════════════════
+        // ═══════════════════════════════════════════════════════════
+        // VOR-GYMI DATA
+        // ═══════════════════════════════════════════════════════════
+        const vorGymiData = [
+            {
+                subject: "vg-math",
+                label: "Vor-Gymi – Mathematik",
+                modules: [
+                    {
+                        name: "Zahlenbereiche & Arithmetik",
+                        topics: [
+                            {
+                                name: "Natürliche Zahlen ℕ", items: [], subtopics: [
+                                    { name: "Stellenwertsystem", items: ["Tausender", "Hunderter", "Zehner", "Einer"] },
+                                    { name: "Operationen", items: ["Addition", "Subtraktion", "Multiplikation", "Division"] }
+                                ]
+                            },
+                            {
+                                name: "Ganze Zahlen ℤ", items: [], subtopics: [
+                                    { name: "Zahlenstrahl", items: ["Positive Zahlen", "Negative Zahlen"] },
+                                    { name: "Rechenregeln", items: ["Vorzeichenregeln", "Betrag"] }
+                                ]
+                            },
+                            {
+                                name: "Rationale Zahlen ℚ", items: [], subtopics: [
+                                    { name: "Bruchrechnung", items: ["Erweitern & Kürzen", "Hauptnenner", "Kehrwert", "ggT & kgV", "Addition & Subtraktion", "Multiplikation & Division"] },
+                                    { name: "Dezimalzahlen", items: ["Periodische Zahlen", "Umwandlung Bruch ↔ Dezimal", "Stellenwerte (Zehntel, Hundertstel)"] }
+                                ]
+                            },
+                            {
+                                name: "Reelle Zahlen ℝ", items: [], subtopics: [
+                                    { name: "Irrationale Zahlen", items: ["√2", "Kreiszahl π"] },
+                                    { name: "Wurzeln", items: ["Quadratwurzel", "Wurzelgesetze", "Rationalmachen des Nenners"] }
+                                ]
+                            },
+                            {
+                                name: "Prozentrechnung", items: [], subtopics: [
+                                    { name: "Grundaufgaben", items: ["Prozentwert", "Prozentsatz", "Grundwert"] },
+                                    { name: "Veränderung", items: ["Prozentuale Erhöhung", "Prozentuale Reduktion", "Zinsrechnung"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Terme, Potenzen & Algebra",
+                        topics: [
+                            {
+                                name: "Terme & Umformungen", items: [], subtopics: [
+                                    { name: "Grundoperationen", items: ["Zusammenfassen", "Ausmultiplizieren (Distributivgesetz)", "Ausklammern"] },
+                                    { name: "Binomische Formeln", items: ["(a+b)² = a²+2ab+b²", "(a−b)² = a²−2ab+b²", "(a+b)(a−b) = a²−b²", "Rückwärts erkennen"] }
+                                ]
+                            },
+                            {
+                                name: "Potenzen & Wurzeln", items: [], subtopics: [
+                                    { name: "Potenzgesetze", items: ["aⁿ·aᵐ = aⁿ⁺ᵐ", "aⁿ÷aᵐ = aⁿ⁻ᵐ", "(aⁿ)ᵐ = aⁿᵐ", "(a·b)ⁿ = aⁿ·bⁿ"] },
+                                    { name: "Besondere Exponenten", items: ["a⁰ = 1", "a⁻ⁿ = 1/aⁿ", "a^(1/n) = ⁿ√a", "a^(m/n) = ⁿ√(aᵐ)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Gleichungen & Proportionalität",
+                        topics: [
+                            { name: "Lineare Gleichungen", items: ["Äquivalenzumformungen", "Gleichungen mit Klammern", "Gleichungen mit Brüchen"] },
+                            {
+                                name: "Lineare Gleichungssysteme", items: [], subtopics: [
+                                    { name: "Lösungsverfahren", items: ["Einsetzungsverfahren", "Gleichsetzungsverfahren", "Additionsverfahren"] }
+                                ]
+                            },
+                            {
+                                name: "Quadratische Gleichungen", items: [], subtopics: [
+                                    { name: "Lösungsmethoden", items: ["Reinquadratisch (x²=a)", "Ausklammern", "Faktorisieren", "abc-/pq-Formel (Einführung)"] }
+                                ]
+                            },
+                            {
+                                name: "Proportionalität & Dreisatz", items: [], subtopics: [
+                                    { name: "Typen", items: ["Direkte Proportionalität (y=kx)", "Indirekte Proportionalität (y=k/x)"] },
+                                    { name: "Dreisatz", items: ["Direkter Dreisatz", "Indirekter Dreisatz"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Funktionen & Koordinatensystem",
+                        topics: [
+                            { name: "Koordinatensystem", items: ["x-/y-Achse", "Quadranten", "Punkte eintragen/ablesen", "Abstand zweier Punkte", "Mittelpunkt"] },
+                            { name: "Funktionsbegriff", items: ["Zuordnung", "Definitionsbereich", "Funktionswerte berechnen", "Graphen zeichnen (Wertetabelle)"] },
+                            {
+                                name: "Lineare Funktionen", items: [], subtopics: [
+                                    { name: "Konzepte", items: ["Steigung m", "y-Achsenabschnitt b", "Nullstelle", "Geradengleichung aus 2 Punkten", "Schnittpunkte"] }
+                                ]
+                            },
+                            {
+                                name: "Quadratische Funktionen", items: [], subtopics: [
+                                    { name: "Konzepte", items: ["Normalparabel", "Scheitelpunktform", "Öffnung (a>0 / a<0)", "Verschiebung & Streckung"] }
+                                ]
+                            },
+                            { name: "Weitere Funktionstypen", items: ["Potenzfunktionen (x³, x⁴)", "Wurzelfunktion √x", "Betragsfunktion |x|", "Hyperbel 1/x"] }
+                        ]
+                    },
+                    {
+                        name: "Geometrie",
+                        topics: [
+                            {
+                                name: "Ebene Figuren", items: [], subtopics: [
+                                    { name: "Formen & Formeln", items: ["Dreieck (A=g·h/2, Winkelsumme 180°)", "Rechteck & Quadrat", "Parallelogramm & Trapez", "Kreis (U=2πr, A=πr²)"] }
+                                ]
+                            },
+                            {
+                                name: "Körper", items: [], subtopics: [
+                                    { name: "Volumen & Oberfläche", items: ["Quader & Würfel", "Prisma", "Zylinder (V=πr²h)"] }
+                                ]
+                            },
+                            { name: "Satz des Pythagoras", items: ["a²+b²=c²", "Hypotenuse berechnen", "Kathete berechnen", "Rechtwinkligkeit prüfen"] },
+                            {
+                                name: "Trigonometrie (rechtwinkliges △)", items: [], subtopics: [
+                                    { name: "Grundlagen", items: ["sin(α) = Gegenkathete/Hypotenuse", "cos(α) = Ankathete/Hypotenuse", "tan(α) = Gegenkathete/Ankathete"] },
+                                    { name: "Spezielle Winkel", items: ["30° (sin=1/2)", "45° (sin=√2/2)", "60° (sin=√3/2)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Statistik & Wahrscheinlichkeit",
+                        topics: [
+                            { name: "Datendarstellung", items: ["Wertetabellen", "Säulen-/Balkendiagramme", "Kreisdiagramme", "Histogramme"] },
+                            { name: "Statistische Kennzahlen", items: ["Arithmetisches Mittel", "Median", "Modus"] },
+                            {
+                                name: "Wahrscheinlichkeit (Grundlagen)", items: [], subtopics: [
+                                    { name: "Konzepte", items: ["Zufallsexperiment", "Ergebnis & Ereignis", "Laplace-Wahrscheinlichkeit", "Baumdiagramme"] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // ═══════════════════════════════════════════════════════════
+        // GYMI DATA – Mathematik & Physik
+        // ═══════════════════════════════════════════════════════════
+        const gymiData = [
+            {
+                subject: "gy-math",
+                label: "Gymi – Mathematik",
+                modules: [
+                    {
+                        name: "Algebra",
+                        topics: [
+                            {
+                                name: "Gleichungen & Ungleichungen", items: [], subtopics: [
+                                    { name: "Quadratische Gleichungen", items: ["pq-Formel / Mitternachtsformel", "Diskriminante & Lösungsanzahl", "Faktorisieren"] },
+                                    { name: "Höhere Ordnung", items: ["Polynomdivision", "Substitution (biquadratisch)", "Satz vom Nullprodukt"] },
+                                    { name: "Ungleichungen", items: ["Äquivalenzumformung", "Fallunterscheidung", "Systeme mit 2 Variablen (graphisch)"] },
+                                    { name: "Parameterdiskussion", items: ["Diskriminante D=b²−4ac", "Lösungsanzahl abhängig von Parametern"] }
+                                ]
+                            },
+                            {
+                                name: "Komplexe Zahlen", items: [], subtopics: [
+                                    { name: "Darstellungsformen", items: ["Algebraische Form (a+bi)", "Trigonometrische Form r(cosφ+i·sinφ)", "Gaußsche Zahlenebene"] },
+                                    { name: "Rechenoperationen", items: ["Addition & Subtraktion", "Multiplikation & Division", "Konjugiert Komplexes", "Betrag & Argument"] },
+                                    { name: "Fortgeschritten", items: ["Satz von Moivre (Potenzen)", "n-te Wurzeln in ℂ", "Gleichungen in ℂ lösen", "Geometrische Interpretation (Drehung/Streckung)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Analysis",
+                        topics: [
+                            {
+                                name: "Elementare Funktionen", items: [], subtopics: [
+                                    { name: "Grundtypen", items: ["Konstante & Identität", "Lineare & Affine", "Potenz- & Wurzelfunktionen", "Betragsfunktion"] },
+                                    { name: "Transzendente Funktionen", items: ["Exponentialfunktion (eˣ, aˣ)", "Logarithmus (ln, log_a)", "Trigonometrische (sin, cos, tan)"] },
+                                    { name: "Abwandlungen", items: ["Spiegelungen f(−x), −f(x)", "Verschiebungen f(x+k), f(x)+k", "Streckung k·f(x)", "|f(x)| und f(|x|)"] }
+                                ]
+                            },
+                            {
+                                name: "Folgen & Reihen", items: [], subtopics: [
+                                    { name: "Folgentypen", items: ["Arithmetische Folge (aₙ=a₁+(n−1)d)", "Geometrische Folge (aₙ=a₁·qⁿ⁻¹)"] },
+                                    { name: "Methoden", items: ["Vollständige Induktion", "Summenformeln"] },
+                                    { name: "Konvergenz", items: ["Grenzwert bestimmen", "Konvergenzbegriff"] }
+                                ]
+                            },
+                            {
+                                name: "Grenzwerte & Stetigkeit", items: [], subtopics: [
+                                    { name: "Limes", items: ["Grenzwertsätze", "Asymptoten (waagrecht/senkrecht/schräg)", "Regel von L'Hôpital"] },
+                                    { name: "Stetigkeit", items: ["Punktweise Stetigkeit", "Sprungstellen & Lücken"] }
+                                ]
+                            },
+                            {
+                                name: "Differentialrechnung", items: [], subtopics: [
+                                    { name: "Grundlagen", items: ["Differenzenquotient → Differentialquotient", "Tangentensteigung"] },
+                                    { name: "Ableitungsregeln", items: ["Summenregel", "Produktregel", "Quotientenregel", "Kettenregel"] },
+                                    { name: "Ableitungen wichtiger Funktionen", items: ["Potenz-/Exponential-/Log-Funktionen", "Trigonometrische Funktionen"] },
+                                    { name: "Kurvendiskussion", items: ["Nullstellen", "Extrema (1. Ableitung)", "Wendepunkte (2. Ableitung)", "Krümmungsverhalten"] },
+                                    { name: "Anwendungen", items: ["Optimierungsprobleme", "Tangentengleichung"] }
+                                ]
+                            },
+                            {
+                                name: "Integralrechnung", items: [], subtopics: [
+                                    { name: "Grundlagen", items: ["Stammfunktion", "Bestimmtes Integral (Riemann)", "Hauptsatz der Analysis"] },
+                                    { name: "Methoden", items: ["Substitution", "Partielle Integration"] },
+                                    { name: "Anwendungen", items: ["Flächenberechnung zwischen Graphen", "Rotationsvolumen"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Trigonometrie",
+                        topics: [
+                            { name: "Einheitskreis", items: ["sin/cos als Koordinaten", "Periodizität", "Spezielle Winkel (30°, 45°, 60°, 90°)"] },
+                            {
+                                name: "Beziehungen", items: [], subtopics: [
+                                    { name: "Winkelbeziehungen", items: ["Komplementärwinkel (α+β=90°)", "Supplementärwinkel (α+β=180°)", "Gegenwinkel"] },
+                                    { name: "Additionstheoreme", items: ["sin(α±β) = sinα·cosβ ± cosα·sinβ", "cos(α±β) = cosα·cosβ ∓ sinα·sinβ"] }
+                                ]
+                            },
+                            { name: "Sinus- & Kosinussatz", items: ["a/sinα = b/sinβ = c/sinγ", "c² = a²+b² − 2ab·cosγ"] },
+                            { name: "Goniometrische Gleichungen", items: ["sin(x)=0 → x=kπ", "cos(x)=0 → x=π/2+kπ", "Allgemeine Lösungsmengen"] }
+                        ]
+                    },
+                    {
+                        name: "Vektorielle & Analytische Geometrie",
+                        topics: [
+                            {
+                                name: "Vektoroperationen", items: [], subtopics: [
+                                    { name: "Grundlagen", items: ["Addition & Skalarmultiplikation", "Linearkombination", "Kolinear & Komplanar", "Orthonormierte Basen"] },
+                                    { name: "Produkte", items: ["Skalarprodukt (u·v = |u||v|cosφ)", "Kreuzprodukt (u×v, senkrechter Vektor)", "Spatprodukt (Volumen)"] }
+                                ]
+                            },
+                            {
+                                name: "Analytische Geometrie Ebene", items: [], subtopics: [
+                                    { name: "Geraden", items: ["Parametergleichung g(t)=P+t·r", "Normalenform ax+by+c=0"] },
+                                    { name: "Kreise", items: ["(x−x₀)²+(y−y₀)²=r²", "Tangentengleichung"] },
+                                    { name: "Kegelschnitte", items: ["Ellipse", "Parabel", "Hyperbel", "Brennpunkte & Exzentrizität"] },
+                                    { name: "Lagebeziehungen", items: ["Schnittpunkte", "Abstände (Punkt-Gerade)", "Winkelhalbierende"] }
+                                ]
+                            },
+                            {
+                                name: "Analytische Geometrie Raum", items: [], subtopics: [
+                                    { name: "Geraden & Ebenen", items: ["Parametergleichung", "Kartesische Ebenengleichung", "Normalenvektor"] },
+                                    { name: "Abstände", items: ["Punkt-Punkt", "Punkt-Gerade", "Punkt-Ebene", "Windschiefe Geraden"] },
+                                    { name: "Winkel", items: ["Gerade-Gerade", "Gerade-Ebene", "Ebene-Ebene"] },
+                                    { name: "Körper", items: ["Würfel & Quader", "Prisma & Zylinder", "Kegel & Kugel"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Stochastik",
+                        topics: [
+                            {
+                                name: "Beschreibende Statistik", items: [], subtopics: [
+                                    { name: "Darstellung", items: ["Kreisdiagramm", "Stabdiagramm", "Histogramm"] },
+                                    { name: "Kennzahlen", items: ["Arithmetisches Mittel", "Median & Modus", "Varianz & Standardabweichung"] }
+                                ]
+                            },
+                            {
+                                name: "Kombinatorik", items: [], subtopics: [
+                                    { name: "Zählprinzipien", items: ["Permutationen (mit/ohne Wdh.)", "Variationen (mit/ohne Wdh.)", "Kombinationen (mit/ohne Wdh.)"] },
+                                    { name: "Sätze", items: ["Binomischer Lehrsatz", "Pascalsches Dreieck"] }
+                                ]
+                            },
+                            {
+                                name: "Wahrscheinlichkeitsrechnung", items: [], subtopics: [
+                                    { name: "Grundlagen", items: ["Ereignisse (A∩B, A∪B, Ā)", "Unabhängige & disjunkte Ereignisse"] },
+                                    { name: "Regeln", items: ["Additionsregel", "Multiplikationsregel", "Bedingte Wahrscheinlichkeit P(A|B)"] },
+                                    { name: "Darstellung", items: ["Ergebnisbaum"] }
+                                ]
+                            },
+                            {
+                                name: "Zufallsvariablen", items: [], subtopics: [
+                                    { name: "Kenngrößen", items: ["Erwartungswert", "Standardabweichung"] },
+                                    { name: "Verteilungen", items: ["Binomialverteilung P(X=k)", "Normalverteilung (Näherung)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Lineare Algebra",
+                        topics: [
+                            {
+                                name: "Lineare Abbildungen", items: [], subtopics: [
+                                    { name: "Begriffe", items: ["Definition (Addition & Skalierung erhalten)", "Kern (Nullraum)", "Bildraum"] },
+                                    { name: "Matrixdarstellung", items: ["Abbildungsmatrix relativ zu Basis", "Basiswechsel"] }
+                                ]
+                            },
+                            {
+                                name: "2×2-Matrizen", items: [], subtopics: [
+                                    { name: "Operationen", items: ["Matrixaddition", "Skalarmultiplikation", "Matrixmultiplikation"] },
+                                    { name: "Determinante & Inverse", items: ["det(A) = ad−bc", "A⁻¹ = (1/det)·[[d,−b],[−c,a]]", "Invertierbarkeit (det≠0)"] }
+                                ]
+                            },
+                            {
+                                name: "Eigenwertprobleme", items: [], subtopics: [
+                                    { name: "Berechnung", items: ["det(A−λI)=0", "Eigenwerte", "Eigenvektoren"] },
+                                    { name: "Interpretation", items: ["Invariante Richtungen", "Streckung/Stauchung", "Symmetrien & Rotationen"] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                subject: "gy-phys",
+                label: "Gymi – Physik",
+                modules: [
+                    {
+                        name: "Grundlagen",
+                        topics: [
+                            {
+                                name: "Grössen & Einheiten", items: [], subtopics: [
+                                    { name: "SI-System", items: ["Grundgrössen", "Masseinheiten"] },
+                                    { name: "Dimensionen", items: ["Einheitenanalyse"] }
+                                ]
+                            },
+                            {
+                                name: "Numerik & Darstellung", items: [], subtopics: [
+                                    { name: "Genauigkeit", items: ["Signifikante Stellen", "Exakte Rechnung", "Abschätzung"] },
+                                    { name: "Schreibweisen", items: ["Exponentialschreibweise", "Zehnerpotenzen", "Vorsilben (Milli, Mega etc.)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Mechanik",
+                        topics: [
+                            {
+                                name: "Kinematik (Bewegungslehre)", items: [], subtopics: [
+                                    { name: "Bewegungsgrössen", items: ["Ort & Weg", "Geschwindigkeit (Vektor/Skalar)", "Beschleunigung", "Bewegungsdiagramme (t-x, t-v)"] },
+                                    { name: "Geradlinige Bewegung", items: ["Gleichförmige Bewegung", "Gleichmässig beschleunigte Bewegung", "Freier Fall"] },
+                                    { name: "Kreisbewegung", items: ["Frequenz & Periode", "Winkelgeschwindigkeit", "Bahngeschwindigkeit", "Zentripetalbeschleunigung"] }
+                                ]
+                            },
+                            {
+                                name: "Dynamik (Kräfte)", items: [], subtopics: [
+                                    { name: "Masse & Materie", items: ["Trägheit", "Schwere", "Dichte"] },
+                                    { name: "Kraftbegriff", items: ["Vektordarstellung", "Newtons Axiome (1., 2., 3.)", "Kräfteparallelogramm"] },
+                                    { name: "Kraftarten", items: ["Gewichtskraft", "Federkraft (Hookesches Gesetz)", "Reibungskraft (Haft/Gleit)", "Normalkraft"] }
+                                ]
+                            },
+                            {
+                                name: "Arbeit & Energie", items: [], subtopics: [
+                                    { name: "Arbeit", items: ["Definition", "Hubarbeit", "Beschleunigungsarbeit", "Reibungsarbeit"] },
+                                    { name: "Energieformen", items: ["Kinetische Energie", "Potentielle Energie (Lage)", "Spannenergie (Feder)"] },
+                                    { name: "Erhaltungssätze", items: ["Energieerhaltungssatz", "Impuls & Impulserhaltung"] },
+                                    { name: "Leistung", items: ["Definition", "Wirkungsgrad"] }
+                                ]
+                            },
+                            {
+                                name: "Hydrostatik", items: [], subtopics: [
+                                    { name: "Druck", items: ["Definition", "Schweredruck", "Pascalsches Prinzip"] },
+                                    { name: "Auftrieb", items: ["Archimedisches Prinzip", "Schwimmen & Sinken"] }
+                                ]
+                            },
+                            {
+                                name: "Gravitation", items: [], subtopics: [
+                                    { name: "Gravitationsgesetz", items: ["Newtonsche Anziehung", "Satellitenbahnen"] },
+                                    { name: "Keplersche Gesetze", items: ["Ellipsenbahnen", "Flächensatz", "Umlaufzeiten (3. Gesetz)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Thermische Phänomene",
+                        topics: [
+                            {
+                                name: "Temperatur & Wärme", items: [], subtopics: [
+                                    { name: "Temperaturskalen", items: ["Celsius", "Kelvin", "Absoluter Nullpunkt"] },
+                                    { name: "Grundbegriffe", items: ["Temperatur vs. Wärme", "Thermisches Gleichgewicht"] }
+                                ]
+                            },
+                            {
+                                name: "Thermodynamik", items: [], subtopics: [
+                                    { name: "Hauptsätze", items: ["Erster Hauptsatz (Energieerhaltung)", "Zweiter Hauptsatz (Entropie/Richtung)"] },
+                                    { name: "Wärmeübertragung", items: ["Wärmeleitung", "Konvektion (Strömung)", "Wärmestrahlung"] }
+                                ]
+                            },
+                            {
+                                name: "Materie & Zustände", items: [], subtopics: [
+                                    { name: "Ausdehnung", items: ["Festkörper", "Flüssigkeiten", "Gase"] },
+                                    { name: "Aggregatszustände", items: ["Schmelzen & Erstarren", "Verdampfen & Kondensieren", "Spezifische Wärmekapazität", "Latente Wärme"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Elektrizitätslehre",
+                        topics: [
+                            {
+                                name: "Elektrostatik", items: [], subtopics: [
+                                    { name: "Ladung", items: ["Coulomb-Gesetz", "Ladungstrennung"] },
+                                    { name: "Elektrisches Feld", items: ["Feldstärke", "Feldlinien", "Homogenes Feld"] },
+                                    { name: "Potential", items: ["Spannung", "Arbeit im E-Feld", "Energie"] }
+                                ]
+                            },
+                            {
+                                name: "Gleichstromkreise", items: [], subtopics: [
+                                    { name: "Grundgrössen", items: ["Stromstärke", "Elektrischer Widerstand", "Spezifischer Widerstand"] },
+                                    { name: "Gesetzmässigkeiten", items: ["Ohmsches Gesetz", "Reihenschaltung", "Parallelschaltung"] },
+                                    { name: "Energieumsatz", items: ["Elektrische Leistung", "Joule'sche Wärme"] }
+                                ]
+                            },
+                            {
+                                name: "Magnetismus", items: [], subtopics: [
+                                    { name: "Magnetfeld", items: ["Feldlinienbilder", "Stromdurchflossener Leiter", "Elektromagnete"] },
+                                    { name: "Kraftwirkung", items: ["Lorentzkraft (auf Leiter)", "Induktion (qualitativ)"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Optik & Wellen",
+                        topics: [
+                            {
+                                name: "Wellenlehre", items: [], subtopics: [
+                                    { name: "Kenngrössen", items: ["Wellenlänge", "Amplitude", "Frequenz", "Ausbreitungsgeschwindigkeit"] },
+                                    { name: "Wellentypen", items: ["Transversalwellen", "Longitudinalwellen"] }
+                                ]
+                            },
+                            {
+                                name: "Wellenphänomene", items: [], subtopics: [
+                                    { name: "Ausbreitung", items: ["Reflexionsgesetz", "Brechungsgesetz (Snellius)"] },
+                                    { name: "Superposition", items: ["Interferenz", "Konstruktiv & Destruktiv"] }
+                                ]
+                            },
+                            { name: "Optik (Grundlagen)", items: ["Lichtgeschwindigkeit", "Lichtstrahlmodell", "Spektrum"] }
+                        ]
+                    },
+                    {
+                        name: "Atomphysik",
+                        topics: [
+                            {
+                                name: "Atomaufbau", items: ["Kern-Hülle-Modell", "Kernkräfte"], subtopics: [
+                                    { name: "Elementarteilchen", items: ["Protonen", "Neutronen", "Elektronen"] }
+                                ]
+                            },
+                            {
+                                name: "Radioaktivität", items: [], subtopics: [
+                                    { name: "Strahlungsarten", items: ["Alpha-Zerfall", "Beta-Zerfall", "Gamma-Strahlung"] },
+                                    { name: "Gesetzmässigkeiten", items: ["Halbwertszeit", "Zerfallsreihe", "Periodensystem (Ordnungszahl/Massenzahl)"] },
+                                    { name: "Strahlenschutz", items: ["Abschirmung"] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+
         // ═══════════════════════════════
         // STATE
         // ═══════════════════════════════
@@ -870,8 +1397,47 @@
 
         function render() {
             const container = document.getElementById('content');
-            container.innerHTML = data.map(sem => {
-                const hidden = currentSem !== 'all' && String(sem.semester) !== currentSem;
+            const isVorGymi = currentSem === 'all' || currentSem === 'vor-gymi';
+            const isGymi = currentSem === 'all' || currentSem === 'gymi';
+            const isStudium = currentSem === 'all' || ['1', '2', '3', '4'].includes(currentSem);
+
+            // Vor-Gymi sections
+            const vorGymiHtml = vorGymiData.map(vg => {
+                return `
+      <div class="semester-section${!isVorGymi ? ' hidden' : ''}" data-sem="${vg.subject}">
+        <h2 class="semester-header">${vg.label}</h2>
+        <div class="module-grid">
+          ${vg.modules.map(m => renderModule(m, vg.subject)).join('')}
+        </div>
+      </div>`;
+            }).join('');
+
+            // Divider Vor-Gymi → Gymi
+            const divider1Html = `
+      <div class="section-divider${!isGymi && !isVorGymi ? ' hidden' : ''}${currentSem === 'vor-gymi' ? ' hidden' : ''}${!isGymi ? ' hidden' : ''}">
+        <span>Gymnasium</span>
+      </div>`;
+
+            // Gymi sections
+            const gymiHtml = gymiData.map(gy => {
+                return `
+      <div class="semester-section${!isGymi ? ' hidden' : ''}" data-sem="${gy.subject}">
+        <h2 class="semester-header">${gy.label}</h2>
+        <div class="module-grid">
+          ${gy.modules.map(m => renderModule(m, gy.subject)).join('')}
+        </div>
+      </div>`;
+            }).join('');
+
+            // Divider Gymi → Studium
+            const divider2Html = `
+      <div id="studium-start" class="section-divider${!isStudium ? ' hidden' : ''}">
+        <span>Studium – BSc ITET</span>
+      </div>`;
+
+            // Studium sections
+            const studiumHtml = data.map(sem => {
+                const hidden = !isStudium || (currentSem !== 'all' && String(sem.semester) !== currentSem);
                 return `
       <div class="semester-section${hidden ? ' hidden' : ''}" data-sem="${sem.semester}">
         <h2 class="semester-header">${sem.label}</h2>
@@ -881,6 +1447,8 @@
       </div>
     `;
             }).join('');
+
+            container.innerHTML = vorGymiHtml + divider1Html + gymiHtml + divider2Html + studiumHtml;
         }
 
         // ═══════════════════════════════
@@ -924,6 +1492,12 @@
 
         // Initial render
         render();
+
+        // Auto-scroll to Studium on initial load
+        setTimeout(() => {
+            const el = document.getElementById('studium-start');
+            if (el) el.scrollIntoView({ behavior: 'instant' });
+        }, 50);
     </script>
 </body>
 
