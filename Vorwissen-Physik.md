@@ -1,0 +1,189 @@
+# Grundlagen
+
+- Grössen & Einheiten
+  - SI-System
+    - Grundgrössen
+    - Masseinheiten
+  - Dimensionen
+    - Einheitenanalyse
+- Numerik & Darstellung
+  - Genauigkeit
+    - Signifikante Stellen
+    - Exakte Rechnung
+    - Abschätzung
+  - Schreibweisen
+    - Exponentialschreibweise
+    - Zehnerpotenzen
+    - Vorsilben (Milli, Mega etc.)
+
+# Mechanik
+
+- Kinematik (Bewegungslehre)
+  - Bewegungsgrössen
+    - Ort & Weg
+    - Geschwindigkeit (Vektor/Skalar)
+    - Beschleunigung
+    - Bewegungsdiagramme (t-x, t-v)
+  - Geradlinige Bewegung
+    - Gleichförmige Bewegung
+    - Gleichmässig beschleunigte Bewegung
+    - Freier Fall
+  - Kreisbewegung
+    - Frequenz & Periode
+    - Winkelgeschwindigkeit
+    - Bahngeschwindigkeit
+    - Zentripetalbeschleunigung
+- Dynamik (Kräfte)
+  - Masse & Materie
+    - Trägheit
+    - Schwere
+    - Dichte
+  - Kraftbegriff
+    - Vektordarstellung
+    - Newtons Axiome (1., 2., 3.)
+    - Kräfteparallelogramm
+  - Kraftarten
+    - Gewichtskraft
+    - Federkraft (Hookesches Gesetz)
+    - Reibungskraft (Haft/Gleit)
+    - Normalkraft
+- Arbeit & Energie
+  - Arbeit
+    - Definition
+    - Hubarbeit
+    - Beschleunigungsarbeit
+    - Reibungsarbeit
+  - Energieformen
+    - Kinetische Energie
+    - Potentielle Energie (Lage)
+    - Spannenergie (Feder)
+  - Erhaltungssätze
+    - Energieerhaltungssatz
+    - Impuls & Impulserhaltung
+  - Leistung
+    - Definition
+    - Wirkungsgrad
+- Hydrostatik
+  - Druck
+    - Definition
+    - Schweredruck
+    - Pascalsches Prinzip
+  - Auftrieb
+    - Archimedisches Prinzip
+    - Schwimmen & Sinken
+- Gravitation
+  - Gravitationsgesetz
+    - Newtonsche Anziehung
+    - Satellitenbahnen
+  - Keplersche Gesetze
+    - Ellipsenbahnen
+    - Flächensatz
+    - Umlaufzeiten (3. Gesetz)
+
+# Thermische Phänomene
+
+- Temperatur & Wärme
+  - Temperaturskalen
+    - Celsius
+    - Kelvin
+    - Absoluter Nullpunkt
+  - Grundbegriffe
+    - Temperatur vs. Wärme
+    - Thermisches Gleichgewicht
+- Thermodynamik
+  - Hauptsätze
+    - Erster Hauptsatz (Energieerhaltung)
+    - Zweiter Hauptsatz (Entropie/Richtung)
+  - Wärmeübertragung
+    - Wärmeleitung
+    - Konvektion (Strömung)
+    - Wärmestrahlung
+- Materie & Zustände
+  - Ausdehnung
+    - Festkörper
+    - Flüssigkeiten
+    - Gase
+  - Aggregatszustände
+    - Schmelzen & Erstarren
+    - Verdampfen & Kondensieren
+    - Spezifische Wärmekapazität
+    - Latente Wärme (Schmelz-/Verdampfungswärme)
+
+# Elektrizitätslehre
+
+- Elektrostatik
+  - Ladung
+    - Coulomb-Gesetz
+    - Ladungstrennung
+  - Elektrisches Feld
+    - Feldstärke
+    - Feldlinien
+    - Homogenes Feld
+  - Potential
+    - Spannung
+    - Arbeit im E-Feld
+    - Energie
+- Gleichstromkreise
+  - Grundgrössen
+    - Stromstärke
+    - Elektrischer Widerstand
+    - Spezifischer Widerstand
+  - Gesetzmässigkeiten
+    - Ohmsches Gesetz
+    - Reihenschaltung
+    - Parallelschaltung
+  - Energieumsatz
+    - Elektrische Leistung
+    - Joule'sche Wärme
+- Magnetismus
+  - Magnetfeld
+    - Feldlinienbilder
+    - Stromdurchflossener Leiter
+    - Elektromagnete
+  - Kraftwirkung
+    - Lorentzkraft (auf Leiter)
+    - Induktion (qualitativ)
+
+# Geometrische Optik & Wellen
+
+- Wellenlehre
+  - Kenngrössen
+    - Wellenlänge
+    - Amplitude
+    - Frequenz
+    - Ausbreitungsgeschwindigkeit
+  - Wellentypen
+    - Transversalwellen
+    - Longitudinalwellen
+- Wellenphänomene
+  - Ausbreitung
+    - Reflexionsgesetz
+    - Brechungsgesetz (Snellius)
+  - Superposition
+    - Interferenz
+    - Konstruktiv & Destruktiv
+- Optik (Grundlagen)
+  - Lichtgeschwindigkeit
+  - Lichtstrahlmodell
+  - Spektrum
+
+# Atomphysik
+
+- Atomaufbau
+  - Kern-Hülle-Modell
+  - Elementarteilchen
+    - Protonen
+    - Neutronen
+    - Elektronen
+  - Kernkräfte
+- Radioaktivität
+  - Strahlungsarten
+    - Alpha-Zerfall
+    - Beta-Zerfall
+    - Gamma-Strahlung
+  - Gesetzmässigkeiten
+    - Halbwertszeit
+    - Zerfallsreihe
+    - Periodensystem (Ordnungszahl/Massenzahl)
+  - Strahlenschutz
+    - Abschirmung
