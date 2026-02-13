@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSc ITET ETH – Abstraktionslevel</title>
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --surface2: #232733;
+            --border: #2e3345;
+            --text: #e2e4ed;
+            --text-dim: #8b8fa7;
+            --accent: #6c8aff;
+            --accent-glow: rgba(108, 138, 255, .18);
+            --sem1: #5b9aff;
+            --sem2: #45d4a8;
+            --sem3: #f0a050;
+            --sem4: #e06088;
+            --radius: 12px;
+            --transition: .3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV BAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 17, 23, .92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .navbar h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            white-space: nowrap;
+            background: linear-gradient(135deg, var(--sem1), var(--sem3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-label {
+            font-size: .78rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        /* Semester Tabs */
+        .sem-tabs {
+            display: flex;
+            gap: 4px;
+        }
+
+        .sem-tab {
+            padding: 6px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: .82rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .sem-tab:hover {
+            background: var(--surface2);
+            color: var(--text);
+        }
+
+        .sem-tab.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .sem-tab[data-sem="all"].active {
+            border-color: var(--accent);
+        }
+
+        .sem-tab[data-sem="1"].active {
+            border-color: var(--sem1);
+            color: var(--sem1);
+            background: rgba(91, 154, 255, .12);
+        }
+
+        .sem-tab[data-sem="2"].active {
+            border-color: var(--sem2);
+            color: var(--sem2);
+            background: rgba(69, 212, 168, .12);
+        }
+
+        .sem-tab[data-sem="3"].active {
+            border-color: var(--sem3);
+            color: var(--sem3);
+            background: rgba(240, 160, 80, .12);
+        }
+
+        .sem-tab[data-sem="4"].active {
+            border-color: var(--sem4);
+            color: var(--sem4);
+            background: rgba(224, 96, 136, .12);
+        }
+
+        /* Abstraction Level Buttons */
+        .level-btns {
+            display: flex;
+            gap: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: .82rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .level-btn:hover {
+            background: var(--surface2);
+            color: var(--text);
+        }
+
+        .level-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* ── MAIN CONTENT ── */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 28px 24px 60px;
+        }
+
+        /* Semester Section */
+        .semester-section {
+            margin-bottom: 36px;
+        }
+
+        .semester-section.hidden {
+            display: none;
+        }
+
+        .semester-header {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-left: 14px;
+            border-left: 4px solid var(--sem1);
+        }
+
+        .semester-section[data-sem="2"] .semester-header {
+            border-color: var(--sem2);
+        }
+
+        .semester-section[data-sem="3"] .semester-header {
+            border-color: var(--sem3);
+        }
+
+        .semester-section[data-sem="4"] .semester-header {
+            border-color: var(--sem4);
+        }
+
+        /* Module Grid */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        /* Module Card */
+        .module-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--sem1);
+            transition: var(--transition);
+        }
+
+        .semester-section[data-sem="2"] .module-card::before {
+            background: var(--sem2);
+        }
+
+        .semester-section[data-sem="3"] .module-card::before {
+            background: var(--sem3);
+        }
+
+        .semester-section[data-sem="4"] .module-card::before {
+            background: var(--sem4);
+        }
+
+        .module-card:hover {
+            border-color: #444;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+        }
+
+        .module-card.expanded {
+            grid-column: 1 / -1;
+            max-width: 900px;
+        }
+
+        .module-header {
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .module-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .module-toggle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            transition: var(--transition);
+        }
+
+        .module-card.expanded .module-toggle,
+        .module-card.level-open .module-toggle {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        /* Level 2 */
+        .level2-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s cubic-bezier(.4, 0, .2, 1), padding .3s;
+            padding: 0 18px;
+        }
+
+        .module-card.expanded .level2-container,
+        .module-card.level-open .level2-container {
+            max-height: 2000px;
+            padding: 0 18px 16px;
+        }
+
+        .level2-item {
+            margin-bottom: 10px;
+            background: var(--surface2);
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .level2-item:hover {
+            border-color: var(--border);
+        }
+
+        .level2-header {
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: .92rem;
+        }
+
+        .level2-toggle {
+            font-size: .7rem;
+            color: var(--text-dim);
+            transition: var(--transition);
+        }
+
+        .level2-item.open .level2-toggle {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        /* Level 3 */
+        .level3-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .level2-item.open .level3-container,
+        .level2-item.level-open .level3-container {
+            max-height: 1000px;
+        }
+
+        .level3-list {
+            padding: 0 14px 10px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .level3-tag {
+            padding: 4px 10px;
+            background: rgba(108, 138, 255, .08);
+            border: 1px solid rgba(108, 138, 255, .15);
+            border-radius: 6px;
+            font-size: .8rem;
+            color: var(--text-dim);
+            transition: var(--transition);
+        }
+
+        .level3-tag:hover {
+            background: rgba(108, 138, 255, .15);
+            color: var(--text);
+        }
+
+        /* Level 4 (sub-sub items) */
+        .level4-group {
+            margin-top: 6px;
+            padding-left: 8px;
+        }
+
+        .level4-label {
+            font-size: .78rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .level4-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .level4-tag {
+            padding: 3px 8px;
+            background: rgba(108, 138, 255, .05);
+            border: 1px solid rgba(108, 138, 255, .1);
+            border-radius: 5px;
+            font-size: .75rem;
+            color: var(--text-dim);
+        }
+
+        /* Breadcrumb / Zoom indicator */
+        .zoom-indicator {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 8px 20px;
+            font-size: .82rem;
+            color: var(--text-dim);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+            z-index: 50;
+        }
+
+        .zoom-indicator.visible {
+            display: flex;
+        }
+
+        .zoom-indicator button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 12px;
+                gap: 12px;
+            }
+
+            .container {
+                padding: 16px 12px 40px;
+            }
+
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .module-card.expanded {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h1>BSc ITET ETH</h1>
+
+        <div class="nav-group">
+            <span class="nav-label">Semester</span>
+            <div class="sem-tabs">
+                <button class="sem-tab active" data-sem="all">Alle</button>
+                <button class="sem-tab" data-sem="1">1</button>
+                <button class="sem-tab" data-sem="2">2</button>
+                <button class="sem-tab" data-sem="3">3</button>
+                <button class="sem-tab" data-sem="4">4</button>
+            </div>
+        </div>
+
+        <div class="nav-group">
+            <span class="nav-label">Abstraktion</span>
+            <div class="level-btns">
+                <button class="level-btn active" data-level="1" title="Nur Module">L1 – Module</button>
+                <button class="level-btn" data-level="2" title="Module + Themenblöcke">L2 – Themen</button>
+                <button class="level-btn" data-level="3" title="Alles aufgeklappt">L3 – Details</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="content"></div>
+
+    <div class="zoom-indicator" id="zoomIndicator">
+        <span id="zoomPath"></span>
+        <button onclick="zoomOut()">← Zurück</button>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════
+        // DATA – 1:1 from BSc ITET ETH.md (Semester 1-4)
+        // ═══════════════════════════════════════════════════════════
+        const data = [
+            {
+                semester: 1,
+                label: "1. Semester",
+                modules: [
+                    {
+                        name: "Technische Mechanik",
+                        topics: [
+                            { name: "Kinematik", items: ["Kraft", "Moment", "Geschwindigkeit/Bewegung"] },
+                            { name: "Statik", items: ["Gleichgewicht", "Äquivalenz und Reduktion von Kräftegruppen", "Reibung"] },
+                            { name: "Dynamik", items: ["Newtonsches Bewegungsgesetz (2. Newton)", "Impulssatz", "Drallsatz"] }
+                        ]
+                    },
+                    {
+                        name: "Netzwerk und Schaltungen I",
+                        topics: [
+                            { name: "Physikalische Grundlagen", items: ["Stromursprung", "Spannungsursprung", "Elektrostatisches Feld", "Leitungsmechanismen"] },
+                            { name: "Bauelemente & Analyse", items: ["Grundbauelemente", "Mathematische Modelle", "Schaltungsentwurf", "Netzwerk-Analyse"] },
+                            { name: "Gleichstromnetzwerke", items: ["Stromverteilung", "Spannungsverteilung", "Stationäres Strömungsfeld", "Berechnungsmethoden"] },
+                            { name: "Elektromagnetische Felder", items: ["Induktion", "Zeitvariante Felder", "Technische Anwendungen"] }
+                        ]
+                    },
+                    {
+                        name: "Digitaltechnik",
+                        topics: [
+                            { name: "Grundlagen & Bausteine", items: ["Analog vs. Digital", "CMOS-Technik", "Zahlensysteme", "Speicherbausteine"] },
+                            { name: "Schaltungsdesign", items: ["Logikgatter", "Boolesche Algebra", "Kombinatorik", "Sequenzielle Logik"] },
+                            { name: "Systementwurf", items: ["Endliche Automaten (FSM)", "Zustandsspeicher", "Mikroprozessor-Basics", "Synthese-Methoden"] }
+                        ]
+                    },
+                    {
+                        name: "Analysis I",
+                        topics: [
+                            { name: "Zahlenbereiche", items: ["Reelle Zahlen", "Komplexe Zahlen"] },
+                            { name: "Analysis-Grundlagen", items: ["Folgen & Grenzwerte", "Reihen & Potenzreihen", "Stetige Abbildungen"] },
+                            { name: "Differential- & Integralrechnung", items: ["Variable Funktionen", "Ableitungsregeln", "Integrationsmethoden"] },
+                            { name: "Differentialgleichungen", items: ["Einführung", "Gewöhnliche DGLs"] }
+                        ]
+                    },
+                    {
+                        name: "Lineare Algebra",
+                        topics: [
+                            { name: "Lineare Gleichungssysteme", items: ["Gauss-Algorithmus", "Matrizen-Operationen"] },
+                            { name: "Matrizenzerlegungen", items: ["LU-Zerlegung", "QR-Zerlegung", "Singulärwertzerlegung (SVD)"] },
+                            { name: "Vektorräume", items: ["Basiswahl & -wechsel", "Lineare Abbildungen", "Koordinatentransformation"] },
+                            { name: "Norm & Skalarprodukt", items: ["Gram-Schmidt-Verfahren", "Projektoren"] },
+                            { name: "Eigenwertprobleme", items: ["Eigenwerte & Eigenvektoren", "Determinanten", "Symmetrische Matrizen"] },
+                            { name: "Anwendungen", items: ["Ausgleichsrechnung", "Numerische Aspekte", "Python (NumPy/SciPy)"] }
+                        ]
+                    }
+                ]
+            },
+            {
+                semester: 2,
+                label: "2. Semester",
+                modules: [
+                    {
+                        name: "Physik I",
+                        topics: [
+                            {
+                                name: "Schwingungen & Wellen",
+                                items: [],
+                                subtopics: [
+                                    { name: "Schwingungstypen", items: ["Harmonisch", "Gedämpft", "Erzwungen"] },
+                                    { name: "Wellenpropagation", items: ["Energie & Intensität", "Beugung & Reflektion"] },
+                                    { name: "Welleneffekte", items: ["Dopplereffekt", "Interferenz & Überlagerung", "Resonanz", "Stehende Wellen"] }
+                                ]
+                            },
+                            {
+                                name: "Thermodynamik",
+                                items: [],
+                                subtopics: [
+                                    { name: "Gaseigenschaften", items: ["Kinetische Gastheorie", "Ideales Gas"] },
+                                    { name: "Hauptsätze", items: ["Energieerhaltung", "Kreisprozesse", "Entropie"] },
+                                    { name: "Wärmetransport", items: ["Übertragung", "Strahlung"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Analysis II",
+                        topics: [
+                            { name: "Mehrdimensionale Differentialrechnung", items: ["Partielle Ableitungen", "Ableitungsregeln", "Implizite Funktionen", "Extremwertaufgaben"] },
+                            { name: "Mehrdimensionale Integralrechnung", items: ["Mehrfachintegrale", "Integrationsmethoden", "Integration über Untermannigfaltigkeiten"] },
+                            { name: "Vektoranalysis", items: ["Vektorfelder", "Satz von Gauss", "Satz von Stokes"] }
+                        ]
+                    },
+                    {
+                        name: "Mathematische Methoden",
+                        topics: [
+                            { name: "Komplexe Analysis", items: ["Komplexe Funktionen", "Ableitungsregeln", "Cauchy-Riemann-Gleichungen"] },
+                            { name: "Integration", items: ["Komplexes Integral", "Residuensatz", "Anwendungen"] },
+                            { name: "Reihenentwicklungen", items: ["Taylor-Reihen", "Laurent-Reihen"] },
+                            { name: "Transformationen", items: ["Fourier-Reihen", "Fourier-Transformation", "Laplace-Transformation"] }
+                        ]
+                    },
+                    {
+                        name: "Netzwerk und Schaltungen II",
+                        topics: [
+                            { name: "Wechselstromrechnung", items: ["Komplexe Methoden", "Maschenstromverfahren", "Knotenpotentialverfahren", "Netzwerksätze"] },
+                            { name: "Systemverhalten", items: ["Zeitbereich", "Frequenzbereich", "Übergangsverhalten", "Übertragungsfunktion", "Zweitore"] },
+                            { name: "Signalanalyse", items: ["Nicht-sinusförmige Signale", "Fourierzerlegung", "Fouriertransformation", "Laplacetransformation"] },
+                            { name: "Operationsverstärker", items: ["Grundschaltungen", "Gegentaktverstärker", "Differenzverstärker", "Dimensionierung"] }
+                        ]
+                    },
+                    {
+                        name: "Informatik I",
+                        topics: [
+                            { name: "Grundlagen", items: ["Fundamentale Datentypen", "Ausdrücke & Anweisungen", "Computerarithmetik"] },
+                            { name: "Programmierkonzepte", items: ["Kontrollstrukturen", "Funktionen", "Klassen (OOP)", "Referenzen & Zeiger"] },
+                            { name: "Datenstrukturen", items: ["Containertypen", "Dynamische Datentypen", "Speichermanagement"] }
+                        ]
+                    }
+                ]
+            },
+            {
+                semester: 3,
+                label: "3. Semester",
+                modules: [
+                    {
+                        name: "Signal- und Systemtheorie I",
+                        topics: [
+                            { name: "Grundlagen", items: ["Signalklassifikation", "Systemklassifikation", "Zeit- & Frequenzbereich", "Signal- & Hilberträume"] },
+                            { name: "Systemtheorie", items: ["Lineare zeitinvariante Systeme (LTI)", "Verallgemeinerte Funktionen"] },
+                            { name: "Abtastung", items: ["Zeitkontinuierliche Signale", "Abtasttheorem"] },
+                            { name: "Zeitdiskrete Systeme", items: ["Systemverhalten", "z-Transformation"] },
+                            { name: "Fouriertransformation", items: ["Diskrete Fourier-Transformation (DFT)", "Schnelle Fourier-Transformation (FFT)"] }
+                        ]
+                    },
+                    {
+                        name: "Informatik II",
+                        topics: [
+                            {
+                                name: "Algorithmen & Komplexität",
+                                items: ["Asymptotische Laufzeit (O-Notation)"],
+                                subtopics: [
+                                    { name: "Basis-Algorithmen", items: ["Suchen", "Sortieren"] },
+                                    { name: "Graphenalgorithmen", items: ["Kürzeste Wege", "Spannbäume"] }
+                                ]
+                            },
+                            {
+                                name: "Datenstrukturen",
+                                items: ["Hashtabellen"],
+                                subtopics: [
+                                    { name: "Baumstrukturen", items: ["Suchbäume", "Balancierte Bäume", "Heaps"] }
+                                ]
+                            },
+                            { name: "Entwurfsstrategien", items: ["Induktion", "Divide & Conquer", "Backtracking", "Dynamische Programmierung"] },
+                            {
+                                name: "Generische Programmierung",
+                                items: ["C++ Templates"],
+                                subtopics: [
+                                    { name: "Funktionale Konzepte", items: ["Funktionen höherer Ordnung", "Lambdas", "Closures"] }
+                                ]
+                            },
+                            {
+                                name: "Parallelisierung",
+                                items: [],
+                                subtopics: [
+                                    { name: "Grundlagen", items: ["Nebenläufigkeit", "Abhängigkeiten"] },
+                                    { name: "Speichermodelle", items: ["Geteilter Speicher"] },
+                                    { name: "Synchronisation", items: ["Race Conditions", "Mutex", "Kommunikation"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Halbleiterschaltungstechnik",
+                        topics: [
+                            { name: "Transistor-Grundlagen", items: ["Bauteile (Bipolar/MOSFET)", "Signalverhalten", "Arbeitspunkt", "Eintransistorverstärker"] },
+                            { name: "Frequenzanalyse", items: ["Verstärker-Frequenzgang", "Bandbreitenerweiterung"] },
+                            {
+                                name: "Spezielle Verstärker",
+                                items: ["Differenzverstärker", "Transimpedanzverstärker"],
+                                subtopics: [
+                                    { name: "Instrumentierungsverstärker", items: ["Störunterdrückung", "Chopper-Technik"] }
+                                ]
+                            },
+                            { name: "Aktive Filter", items: ["Grundstrukturen", "Biquadratische Stufen", "Höhere Ordnung", "Switched-Cap-Filter"] }
+                        ]
+                    },
+                    {
+                        name: "Physik II",
+                        topics: [
+                            { name: "Quantenmechanik Grundlagen", items: ["Wellenmechanik", "Postulate & Formalismus"] },
+                            { name: "Modellsysteme", items: ["Potentialtopf", "Harmonischer Oszillator", "Wasserstoffatom"] },
+                            { name: "Mehrteilchensysteme", items: ["Identische Teilchen", "Pauli-Prinzip", "Quantenstatistik"] },
+                            { name: "Festkörperphysik", items: ["Kristallsysteme", "Bandstrukturen"] },
+                            { name: "Konzepte & Anwendungen", items: ["Näherungsmethoden", "Verschränkung & Superposition", "Engineering-Anwendungen"] }
+                        ]
+                    },
+                    {
+                        name: "Diskrete Mathematik",
+                        topics: [
+                            { name: "Mengenlehre", items: ["Grundlagen", "Axiome"] },
+                            { name: "Kombinatorik", items: ["Zählformen", "Zählprinzipien", "Spezielle Zählprobleme"] },
+                            {
+                                name: "Graphentheorie",
+                                items: [],
+                                subtopics: [
+                                    { name: "Graphenarten", items: ["Netzwerke", "Bäume"] },
+                                    { name: "Graphenprobleme", items: ["Einfärbung", "Flüsse & Schnitte", "Matchings"] }
+                                ]
+                            },
+                            {
+                                name: "Algebra",
+                                items: [],
+                                subtopics: [
+                                    { name: "Zahlentheorie", items: ["Teilbarkeit", "Kongruenz"] },
+                                    { name: "Strukturen", items: ["Gruppen", "Körper & Ringe"] },
+                                    { name: "Anwendungen", items: ["Kryptographie", "Fehlerkorrektur"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Analysis III",
+                        topics: [
+                            { name: "PDE Einführung", items: ["Klassifikation", "Typen"] },
+                            { name: "Quasilineare DGLs", items: ["Charakteristikenmethode", "Erhaltungssätze"] },
+                            { name: "Hyperbolische DGLs", items: ["Wellengleichung", "d'Alembert-Formel", "Separationsansatz"] },
+                            { name: "Parabolische DGLs", items: ["Wärmeleitungsgleichung", "Maximumsprinzip", "Separationsansatz"] },
+                            { name: "Elliptische DGLs", items: ["Laplace-Gleichung", "Maximumsprinzip", "Variationsmethoden"] }
+                        ]
+                    }
+                ]
+            },
+            {
+                semester: 4,
+                label: "4. Semester",
+                modules: [
+                    {
+                        name: "Signal- und Systemtheorie II",
+                        topics: [
+                            { name: "Systemmodellierung", items: ["Dynamische Systeme", "LTI-Systeme", "Zustandsgleichungen"] },
+                            { name: "Zustandsraumanalyse", items: ["Lösungsmethoden", "Stabilität", "Steuerbarkeit", "Beobachtbarkeit"] },
+                            { name: "Frequenzbereichsanalyse", items: ["Frequenzgang", "Bode-Diagramm", "Nyquist-Diagramm"] },
+                            { name: "Zeitdiskrete Systeme", items: ["Abtastung", "Systemmodelle"] },
+                            { name: "Erweiterte Themen", items: ["Nichtlineare Systeme", "Chaos", "Diskrete Ereignisse", "Hybride Systeme"] }
+                        ]
+                    },
+                    {
+                        name: "Technische Informatik",
+                        topics: [
+                            {
+                                name: "Hardware-Architektur",
+                                items: [],
+                                subtopics: [
+                                    { name: "Mikroprozessoren", items: ["Control Paths", "Data Paths"] },
+                                    { name: "Optimierungen", items: ["Pipelining", "Speculation", "Caching"] }
+                                ]
+                            },
+                            {
+                                name: "Software-Systeme",
+                                items: ["Low-Level Programmierung"],
+                                subtopics: [
+                                    {
+                                        name: "Betriebssystem-Konzepte",
+                                        items: ["Prozess-Management", "Scheduling"],
+                                        subtopics: [
+                                            { name: "Speicherverwaltung", items: ["Physisch", "Virtuell"] }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Halbleiterelemente",
+                        topics: [
+                            { name: "Einführung", items: ["Historie der Mikroelektronik"] },
+                            {
+                                name: "Halbleiterphysik",
+                                items: ["Festkörper-Kristallstruktur", "Halbleitereigenschaften (Si)", "Quantenmechanik & Bändermodell", "Leitfähigkeit & Dispersion", "Gleichgewichtsstatistik", "Transportgleichungen", "Generation & Rekombination"]
+                            },
+                            {
+                                name: "Bauelemente",
+                                items: [],
+                                subtopics: [
+                                    { name: "pn-Übergang", items: ["Physik & Elektrik"] },
+                                    { name: "pn-Diode", items: ["Kennlinien", "Kleinsignalverhalten", "Durchbruchmechanismen"] },
+                                    { name: "MOS-Bauelemente", items: ["Bänderdiagramm", "MOSFET-Betrieb", "CV- & IV-Charakteristiken", "Frequenzverhalten"] },
+                                    { name: "Bipolartransistoren", items: ["Funktionsprinzip", "Betriebsmodi", "Modellierung & Simulation"] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Elektromagnetische Wellen und Felder",
+                        topics: [
+                            { name: "Grundlagen", items: ["Maxwell'sche Gleichungen", "Wellengleichung"] },
+                            { name: "Wellenausbreitung", items: ["Felder im freien Raum", "Brechung & Reflexion"] },
+                            { name: "Strahlung", items: ["Dipolstrahlung", "Feldwinkelspektrum"] }
+                        ]
+                    },
+                    {
+                        name: "Numerik",
+                        topics: [
+                            { name: "Grundlagen", items: ["Scientific Python", "Fehleranalyse"] },
+                            { name: "Analysis-Methoden", items: ["Nullstellensuche", "Newton-Verfahren", "Quadratur"] },
+                            { name: "Differentialgleichungen", items: ["Anfangswertaufgaben", "Einschrittverfahren", "Schrittweitensteuerung", "Stabilitätsanalyse"] }
+                        ]
+                    },
+                    {
+                        name: "Wahrscheinlichkeitstheorie und Statistik",
+                        topics: [
+                            { name: "Wahrscheinlichkeitsräume", items: ["Kolmogorov-Axiome", "Diskrete Modelle", "Verteilungsfunktionen"] },
+                            { name: "Bedingte Wahrscheinlichkeiten", items: ["Bayes'sche Regel", "Nachrichtenquellen", "Bedingte Verteilungen"] },
+                            { name: "Zufallsvariablen", items: ["Erwartungswert & Varianz", "Gesetz der grossen Zahlen", "Zentraler Grenzwertsatz"] },
+                            { name: "Statistik", items: ["Parameterschätzung", "Hypothesentests"] }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // ═══════════════════════════════
+        // STATE
+        // ═══════════════════════════════
+        let currentSem = 'all';
+        let currentLevel = 1;
+        let zoomedModule = null;
+
+        // ═══════════════════════════════
+        // RENDER
+        // ═══════════════════════════════
+        function renderSubtopics(subtopics) {
+            if (!subtopics || subtopics.length === 0) return '';
+            return subtopics.map(st => {
+                // Recursively handle deeper subtopics
+                let deeperHtml = '';
+                if (st.subtopics && st.subtopics.length > 0) {
+                    deeperHtml = `<div class="level4-group" style="margin-top:6px;">
+        ${st.subtopics.map(dst => `
+          <div class="level4-group">
+            <div class="level4-label">${dst.name}</div>
+            <div class="level4-tags">${dst.items.map(i => `<span class="level4-tag">${i}</span>`).join('')}</div>
+          </div>
+        `).join('')}
+      </div>`;
+                }
+                return `<div class="level4-group">
+      <div class="level4-label">${st.name}</div>
+      <div class="level4-tags">${st.items.map(i => `<span class="level4-tag">${i}</span>`).join('')}</div>
+      ${deeperHtml}
+    </div>`;
+            }).join('');
+        }
+
+        function renderTopic(topic) {
+            const hasItems = (topic.items && topic.items.length > 0) || (topic.subtopics && topic.subtopics.length > 0);
+            const levelOpenClass = currentLevel >= 3 ? ' level-open' : '';
+            return `
+    <div class="level2-item${levelOpenClass}" onclick="toggleLevel2(event, this)">
+      <div class="level2-header">
+        <span>${topic.name}</span>
+        ${hasItems ? '<span class="level2-toggle">▼</span>' : ''}
+      </div>
+      ${hasItems ? `
+        <div class="level3-container">
+          <div class="level3-list">
+            ${(topic.items || []).map(item => `<span class="level3-tag">${item}</span>`).join('')}
+            ${renderSubtopics(topic.subtopics)}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+        }
+
+        function renderModule(mod, semNum) {
+            const levelOpenClass = currentLevel >= 2 ? ' level-open' : '';
+            return `
+    <div class="module-card${levelOpenClass}" onclick="toggleModule(event, this)">
+      <div class="module-header">
+        <span class="module-name">${mod.name}</span>
+        <span class="module-toggle">▼</span>
+      </div>
+      <div class="level2-container">
+        ${mod.topics.map(t => renderTopic(t)).join('')}
+      </div>
+    </div>
+  `;
+        }
+
+        function render() {
+            const container = document.getElementById('content');
+            container.innerHTML = data.map(sem => {
+                const hidden = currentSem !== 'all' && String(sem.semester) !== currentSem;
+                return `
+      <div class="semester-section${hidden ? ' hidden' : ''}" data-sem="${sem.semester}">
+        <h2 class="semester-header">${sem.label}</h2>
+        <div class="module-grid">
+          ${sem.modules.map(m => renderModule(m, sem.semester)).join('')}
+        </div>
+      </div>
+    `;
+            }).join('');
+        }
+
+        // ═══════════════════════════════
+        // INTERACTIONS
+        // ═══════════════════════════════
+        function toggleModule(e, el) {
+            if (e.target.closest('.level2-item')) return; // don't toggle when clicking inner
+            el.classList.toggle('expanded');
+        }
+
+        function toggleLevel2(e, el) {
+            e.stopPropagation();
+            el.classList.toggle('open');
+        }
+
+        function zoomOut() {
+            zoomedModule = null;
+            document.getElementById('zoomIndicator').classList.remove('visible');
+            render();
+        }
+
+        // Semester tabs
+        document.querySelectorAll('.sem-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.sem-tab').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSem = btn.dataset.sem;
+                render();
+            });
+        });
+
+        // Abstraction level buttons
+        document.querySelectorAll('.level-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentLevel = parseInt(btn.dataset.level);
+                render();
+            });
+        });
+
+        // Initial render
+        render();
+    </script>
+</body>
+
+</html>
