@@ -37,8 +37,10 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ── NAV BAR ── */
@@ -63,8 +65,8 @@
         }
 
         .navbar {
-            position: sticky;
-            top: 0;
+            position: relative;
+            flex-shrink: 0;
             z-index: 100;
             background: rgba(15, 17, 23, .92);
             backdrop-filter: blur(16px);
@@ -194,6 +196,90 @@
             border-color: var(--accent);
             color: var(--accent);
             background: var(--accent-glow);
+        }
+
+        /* ── VIEWPORT / CANVAS (pan-zoom) ── */
+        #viewport {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        #viewport.grabbing {
+            cursor: grabbing;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: 0 0;
+            will-change: transform;
+        }
+
+        /* Zoom controls */
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .zoom-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .zoom-btn:hover {
+            background: var(--surface2);
+            color: var(--text);
+            border-color: var(--accent);
+        }
+
+        .zoom-btn.wide {
+            width: auto;
+            padding: 0 10px;
+            font-size: .75rem;
+        }
+
+        .zoom-level {
+            font-size: .78rem;
+            color: var(--text-dim);
+            min-width: 42px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Map hint */
+        #map-hint {
+            position: absolute;
+            bottom: 18px;
+            right: 18px;
+            background: rgba(26, 29, 39, .88);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 7px 14px;
+            font-size: .74rem;
+            color: var(--text-dim);
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1.2s;
+            z-index: 50;
         }
 
         /* ── MAIN CONTENT ── */
@@ -569,6 +655,13 @@
             color: var(--accent);
             background: var(--accent-glow);
         }
+
+        /* Responsive tweaks for viewport layout */
+        @media (max-width: 600px) {
+            .zoom-level {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -604,9 +697,21 @@
             <button class="arrow-toggle active" id="arrowToggle" title="Abhängigkeitspfeile anzeigen/verbergen">⤷
                 Roadmap</button>
         </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOutBtn" title="Herauszoomen (Scroll ↓)">−</button>
+            <span class="zoom-level" id="zoomLevelDisplay">100%</span>
+            <button class="zoom-btn" id="zoomInBtn" title="Hineinzoomen (Scroll ↑)">+</button>
+            <button class="zoom-btn wide" id="zoomResetBtn" title="Ansicht zurücksetzen">↺ Reset</button>
+        </div>
     </nav>
 
-    <div class="container" id="content"></div>
+    <div id="viewport">
+        <div id="canvas">
+            <div class="container" id="content"></div>
+        </div>
+        <div id="map-hint">Scrollen&nbsp;=&nbsp;Zoom &nbsp;·&nbsp; Ziehen&nbsp;=&nbsp;Bewegen</div>
+    </div>
 
     <div class="zoom-indicator" id="zoomIndicator">
         <span id="zoomPath"></span>
@@ -1592,10 +1697,10 @@
 
                 const fR = fromEl.getBoundingClientRect();
                 const tR = toEl.getBoundingClientRect();
-                const x1 = fR.left + fR.width / 2 - cR.left;
-                const y1 = fR.bottom - cR.top;
-                const x2 = tR.left + tR.width / 2 - cR.left;
-                const y2 = tR.top - cR.top;
+                const x1 = (fR.left + fR.width / 2 - cR.left) / scale;
+                const y1 = (fR.bottom - cR.top) / scale;
+                const x2 = (tR.left + tR.width / 2 - cR.left) / scale;
+                const y2 = (tR.top - cR.top) / scale;
 
                 let stroke, marker;
                 if (fromId.startsWith('vg-')) { stroke = 'rgba(249,168,212,0.35)'; marker = 'url(#arr-vg)'; }
@@ -1668,17 +1773,150 @@
             drawArrows();
         });
 
+        // ═══════════════════════════════
+        // PAN / ZOOM ENGINE
+        // ═══════════════════════════════
+        let panX = 0, panY = 0, scale = 1;
+        let isPanning = false, panStartX = 0, panStartY = 0;
+        let didPanMove = false;
+        const PAN_THRESHOLD = 5;
+
+        function applyTransform() {
+            document.getElementById('canvas').style.transform =
+                'translate(' + panX + 'px,' + panY + 'px) scale(' + scale + ')';
+            document.getElementById('zoomLevelDisplay').textContent = Math.round(scale * 100) + '%';
+        }
+
+        function zoomAt(vx, vy, factor) {
+            const newScale = Math.min(Math.max(scale * factor, 0.12), 2.5);
+            const r = newScale / scale;
+            panX = vx - r * (vx - panX);
+            panY = vy - r * (vy - panY);
+            scale = newScale;
+            applyTransform();
+            scheduleArrowRedraw();
+        }
+
+        const viewport = document.getElementById('viewport');
+
+        // Wheel to zoom
+        viewport.addEventListener('wheel', function (e) {
+            e.preventDefault();
+            const rect = viewport.getBoundingClientRect();
+            zoomAt(e.clientX - rect.left, e.clientY - rect.top, e.deltaY > 0 ? 0.9 : 1.1);
+        }, { passive: false });
+
+        // Mouse pan
+        viewport.addEventListener('mousedown', function (e) {
+            if (e.button !== 0) return;
+            isPanning = true;
+            didPanMove = false;
+            panStartX = e.clientX - panX;
+            panStartY = e.clientY - panY;
+            viewport.classList.add('grabbing');
+        });
+
+        window.addEventListener('mousemove', function (e) {
+            if (!isPanning) return;
+            const nx = e.clientX - panStartX;
+            const ny = e.clientY - panStartY;
+            if (Math.abs(nx - panX) > PAN_THRESHOLD || Math.abs(ny - panY) > PAN_THRESHOLD) didPanMove = true;
+            panX = nx;
+            panY = ny;
+            applyTransform();
+            scheduleArrowRedraw();
+        });
+
+        window.addEventListener('mouseup', function () {
+            if (isPanning) { isPanning = false; viewport.classList.remove('grabbing'); }
+        });
+
+        // Suppress card clicks that were actually pan gestures
+        viewport.addEventListener('click', function (e) {
+            if (didPanMove) { e.stopPropagation(); didPanMove = false; }
+        }, true);
+
+        // Touch: single-finger pan + two-finger pinch zoom
+        let lastPinchDist = 0;
+        viewport.addEventListener('touchstart', function (e) {
+            if (e.touches.length === 1) {
+                isPanning = true;
+                didPanMove = false;
+                panStartX = e.touches[0].clientX - panX;
+                panStartY = e.touches[0].clientY - panY;
+                lastPinchDist = 0;
+            } else {
+                isPanning = false;
+                lastPinchDist = 0;
+            }
+            e.preventDefault();
+        }, { passive: false });
+
+        viewport.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+            if (e.touches.length === 1 && isPanning) {
+                const nx = e.touches[0].clientX - panStartX;
+                const ny = e.touches[0].clientY - panStartY;
+                if (Math.abs(nx - panX) > PAN_THRESHOLD || Math.abs(ny - panY) > PAN_THRESHOLD) didPanMove = true;
+                panX = nx; panY = ny;
+                applyTransform(); scheduleArrowRedraw();
+            } else if (e.touches.length === 2) {
+                const t1 = e.touches[0], t2 = e.touches[1];
+                const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+                if (lastPinchDist > 0) {
+                    const rect = viewport.getBoundingClientRect();
+                    zoomAt(
+                        (t1.clientX + t2.clientX) / 2 - rect.left,
+                        (t1.clientY + t2.clientY) / 2 - rect.top,
+                        dist / lastPinchDist
+                    );
+                }
+                lastPinchDist = dist;
+            }
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', function () { isPanning = false; lastPinchDist = 0; });
+
+        // Zoom buttons
+        document.getElementById('zoomInBtn').addEventListener('click', function () {
+            const r = viewport.getBoundingClientRect();
+            zoomAt(r.width / 2, r.height / 2, 1.25);
+        });
+        document.getElementById('zoomOutBtn').addEventListener('click', function () {
+            const r = viewport.getBoundingClientRect();
+            zoomAt(r.width / 2, r.height / 2, 0.8);
+        });
+        document.getElementById('zoomResetBtn').addEventListener('click', function () {
+            scale = 1; panX = 0; panY = 0;
+            applyTransform(); scheduleArrowRedraw();
+            setTimeout(panToStudium, 50);
+        });
+
+        function panToStudium() {
+            const el = document.getElementById('studium-start');
+            if (!el) return;
+            const content = document.getElementById('content');
+            const topFromCanvas = el.offsetTop + content.offsetTop;
+            panY = -(topFromCanvas * scale) + 20;
+            applyTransform();
+            scheduleArrowRedraw();
+        }
+
         // Redraw arrows on resize
-        window.addEventListener('resize', () => requestAnimationFrame(drawArrows));
+        window.addEventListener('resize', function () { scheduleArrowRedraw(); });
 
         // Initial render
         render();
+        applyTransform();
 
-        // Auto-scroll to Studium on initial load
-        setTimeout(() => {
-            const el = document.getElementById('studium-start');
-            if (el) el.scrollIntoView({ behavior: 'instant' });
-        }, 50);
+        // Pan to Studium on initial load
+        setTimeout(panToStudium, 100);
+
+        // Fade out the hint overlay
+        setTimeout(function () {
+            const h = document.getElementById('map-hint');
+            if (h) h.style.opacity = '0';
+        }, 3500);
     </script>
 </body>
 
